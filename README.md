@@ -1,1 +1,1 @@
-backend= https://github.com/Dtowerssj/task-master-backend
+backend= https://p3-rn-back.herokuapp.com/
