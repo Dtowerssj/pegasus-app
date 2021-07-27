@@ -5,7 +5,8 @@ import { View, StyleSheet, Alert, ToastAndroid } from "react-native";
 
 import { Colors } from "../constants";
 import LoginScreen from "../screens/LoginScreen";
-import RegisterScreen from "../screens/RegisterScreen";
+import RegisterUserScreen from "../screens/RegisterUserScreen";
+import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen";
 import AddTaskScreen from "../screens/AddTaskScreen";
 import UpdateTaskScreen from "../screens/UpdateTaskScreen";
 import TaskScreen from "../screens/TaskScreen";
@@ -34,7 +35,16 @@ const TaskNavigator = () => {
     <TasksStackNavigator.Navigator>
       <TasksStackNavigator.Screen
         name="Register"
-        component={RegisterScreen}
+        component={RegisterUserScreen}
+        options={{
+          ...defautlStyles,
+          title: "¡Bienvenido!",
+          headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="RegisterEstablecimiento"
+        component={RegisterEstablishmentScreen}
         options={{
           ...defautlStyles,
           title: "¡Bienvenido!",

@@ -13,7 +13,7 @@ import {
   Text,
   TextInput,
   Button,
-  Alert
+  Alert,
 } from "react-native";
 
 //Estilos
@@ -26,7 +26,7 @@ import { createUser } from "../api/api.users";
 const cuenta = "¿Ya tienes una cuenta? ";
 const ini = " Inicia Sesión";
 
-const RegisterScreen = ({ navigation }) => {
+const RegisterEstablishmentScreen = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
@@ -65,21 +65,20 @@ const RegisterScreen = ({ navigation }) => {
     setMessageType(type);
   };
   */
-  
+
   return (
     <ScrollView style={globalStyles.ContenedorEstilizado}>
       <View style={globalStyles.ContenedorInterno}>
-        <Text style={globalStyles.TituloPagina}>Task Master</Text>
-        <Text style={globalStyles.SubTitulo}>Registro de Cuenta</Text>
-              <View style={globalStyles.VistaExtra}>
-                
-                  <Text
-                    style={globalStyles.ContenidoEnlaceTexto}
-                    onPress={() => navigation.navigate("BusinessHome")}
-                  >
-                    home
-                  </Text>
-              </View>
+        <Text style={globalStyles.TituloPagina}>Uber Eats</Text>
+        <Text style={globalStyles.SubTitulo}>Registro de Establecimiento</Text>
+        <View style={globalStyles.VistaExtra}>
+          <Text
+            style={globalStyles.ContenidoEnlaceTexto}
+            onPress={() => navigation.navigate("BusinessHome")}
+          >
+            home
+          </Text>
+        </View>
 
         <Formik
           initialValues={{
@@ -92,19 +91,25 @@ const RegisterScreen = ({ navigation }) => {
             try {
               console.log(values);
               createUser(values);
-              Alert.alert("Registro exitoso", "Su usuario ha sido registrado exitosamente!!")
-            navigation.navigate("Login")
+              Alert.alert(
+                "Registro exitoso",
+                "Su usuario ha sido registrado exitosamente!!"
+              );
+              navigation.navigate("Login");
             } catch (error) {
-              console.log(error)
-              Alert.alert("Registro fallido", "No se pudo registrar su usuario :(")
+              console.log(error);
+              Alert.alert(
+                "Registro fallido",
+                "No se pudo registrar su usuario :("
+              );
             }
-            
           }}
-        >{({ handleChange, handleBlur, handleSubmit, values }) => (
+        >
+          {({ handleChange, handleBlur, handleSubmit, values }) => (
             <View style={globalStyles.AreaFormularioEstilizado}>
               <MiTextoEntrada
                 label="Nombre del establecimiento"
-                icon="person"
+                icon="business"
                 placeholder="Luis Acurero"
                 placeholderTextColor={Colors.luzoscuro}
                 onChangeText={handleChange("nombre")}
@@ -115,7 +120,7 @@ const RegisterScreen = ({ navigation }) => {
               <MiTextoEntrada
                 label="Nombre de Usuario"
                 icon="person"
-                placeholder="RocketMan20"
+                placeholder="SuperAcurero2021"
                 placeholderTextColor={Colors.luzoscuro}
                 onChangeText={handleChange("usuario")}
                 onBlur={handleBlur("usuario")}
@@ -151,14 +156,12 @@ const RegisterScreen = ({ navigation }) => {
                 {message}
               </Text>
 
-            
-                <TouchableOpacity
-                  style={globalStyles.BotonEstilizado}
-                  onPress={handleSubmit}
-                >
-                  <Text style={globalStyles.BotonTexto}>Regístrate</Text>
-                </TouchableOpacity>
-              
+              <TouchableOpacity
+                style={globalStyles.BotonEstilizado}
+                onPress={handleSubmit}
+              >
+                <Text style={globalStyles.BotonTexto}>Regístrate</Text>
+              </TouchableOpacity>
 
               <View style={globalStyles.VistaExtra}>
                 <Text style={globalStyles.TextoExtra}>
@@ -189,6 +192,7 @@ const MiTextoEntrada = ({
   hidePassword,
   setHidePassword,
   isDate,
+  business,
   ...props
 }) => {
   return (
@@ -221,4 +225,4 @@ const MiTextoEntrada = ({
   );
 };
 
-export default RegisterScreen;
+export default RegisterEstablishmentScreen;

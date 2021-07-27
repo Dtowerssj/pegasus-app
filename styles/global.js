@@ -1,46 +1,45 @@
-import { Colors } from '../constants';
+import { Colors } from "../constants";
 
 export default {
-  
   loader: {
     marginTop: 10,
   },
   noData: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 18,
-    fontFamily: 'Ubuntu-Regular',
+    fontFamily: "Ubuntu-Regular",
   },
   listContainer: {
     paddingHorizontal: 20,
   },
   listItem: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 10,
     padding: 20,
     marginBottom: 10,
     borderWidth: 0.5,
     borderColor: Colors.luzoscuro,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   input: {
     borderBottomWidth: 2,
     borderBottomColor: Colors[4],
-    borderStyle: 'solid',
-    fontFamily: 'Ubuntu-Light',
+    borderStyle: "solid",
+    fontFamily: "Ubuntu-Light",
     fontSize: 20,
     lineHeight: 28,
     marginBottom: 30,
     padding: 5,
   },
   switchContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
     marginBottom: 30,
   },
   switchText: {
     fontSize: 18,
-    fontFamily: 'Ubuntu-Regular',
+    fontFamily: "Ubuntu-Regular",
   },
   ContenedorEstilizado: {
     flex: 1,
@@ -88,13 +87,13 @@ export default {
     marginVertical: 3,
     marginBottom: 10,
     color: Colors.terciario,
-    fontFamily: 'Ubuntu-Light'
+    fontFamily: "Ubuntu-Light",
   },
   EtiquetaEntradaEstilizado: {
     color: Colors.terciario,
     fontSize: 13,
     textAlign: "left",
-    fontFamily: 'Ubuntu-Medium',
+    fontFamily: "Ubuntu-Medium",
     borderColor: "#20232a",
     borderRadius: 6,
   },
@@ -124,12 +123,12 @@ export default {
     borderBottomLeftRadius: 5,
     marginVertical: 5,
     height: 60,
-    fontFamily: 'Ubuntu-Regular',
+    fontFamily: "Ubuntu-Regular",
   },
   BotonTexto: {
     fontSize: 16,
     color: "white",
-    fontFamily: 'Ubuntu-Regular',
+    fontFamily: "Ubuntu-Regular",
   },
   CajaMensaje: {
     textAlign: "center",
@@ -155,17 +154,16 @@ export default {
     alignContent: "center",
     fontSize: 15,
     color: Colors.terciario,
-
   },
   EnlaceTexto: {
     justifyContent: "center",
     alignItems: "center",
-    fontFamily: 'Ubuntu-Regular',
+    fontFamily: "Ubuntu-Regular",
   },
   ContenidoEnlaceTexto: {
     color: Colors.marca,
     fontSize: 15,
-    fontFamily: 'Ubuntu-Regular',
+    fontFamily: "Ubuntu-Regular",
   },
   ActivityIndicator: {
     size: "large",
@@ -192,5 +190,5 @@ export default {
     paddingTop: 50,
     backgroundColor: "#fff",
     flex: 1,
-  }
-}
+  },
+};

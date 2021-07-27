@@ -18,7 +18,7 @@ import {
 import styles from "./../styles/global";
 import { Colors } from "./../constants/index";
 
-// 
+//
 import { loginUser } from "../api/api.users";
 
 // Cliente de axios
@@ -30,9 +30,8 @@ const LoginScreen = ({ navigation }) => {
   const [messageType, setMessageType] = useState();
 
   const handleLogin = async () => {
-    const user = await loginUser()
-
-  }
+    const user = await loginUser();
+  };
 
   /*
   const handleLoginScreen = (credentials, setSubmitting) => {
@@ -70,17 +69,16 @@ const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.ContenedorEstilizado}>
       <View style={styles.ContenedorInterno}>
-        <Text style={styles.TituloPagina}>Wunderlist</Text>
+        <Text style={styles.TituloPagina}>Uber Eats</Text>
         <Text style={styles.SubTitulo}>Cuenta de Ingreso</Text>
-        <View style={globalStyles.VistaExtra}>
-                
-                  <Text
-                    style={globalStyles.ContenidoEnlaceTexto}
-                    onPress={() => navigation.navigate("Home")}
-                  >
-                    click here if login not working
-                  </Text>
-              </View>
+        <View style={styles.VistaExtra}>
+          <Text
+            style={styles.ContenidoEnlaceTexto}
+            onPress={() => navigation.navigate("Home")}
+          >
+            click here if login not working
+          </Text>
+        </View>
 
         <Formik
           initialValues={{ correo: "", clave: "" }}
@@ -89,26 +87,24 @@ const LoginScreen = ({ navigation }) => {
               //handleMessage("Por favor llenar todos los campos");
               setSubmitting(false);
             } else {
-
               //handleLoginScreen(values, setSubmitting);
               try {
-              
-                console.log(values)
+                console.log(values);
                 loginUser(values);
                 navigation.navigate("Home");
-                console.log("Login exitoso")
+                console.log("Login exitoso");
               } catch (error) {
-                console.log(error)
+                console.log(error);
               }
             }
           }}
         >
-          {({ handleChange, handleBlur, handleSubmit, values  }) => (
+          {({ handleChange, handleBlur, handleSubmit, values }) => (
             <View style={styles.AreaFormularioEstilizado}>
               <MiTextoEntrada
                 label="Correo Electrónico"
                 icon="mail"
-                placeholder="andyj@gmail.com"
+                placeholder="AcureroTeacher@gmail.com"
                 placeholderTextColor={Colors.luzoscuro}
                 onChangeText={handleChange("correo")}
                 onBlur={handleBlur("correo")}
@@ -133,12 +129,11 @@ const LoginScreen = ({ navigation }) => {
                 {message}
               </Text>
               <TouchableOpacity
-                  style={styles.BotonEstilizado}
-                  onPress={handleSubmit}
-                >
-                  <Text style={styles.BotonTexto}>Iniciar Sesión</Text>
-                </TouchableOpacity>
-              
+                style={styles.BotonEstilizado}
+                onPress={handleSubmit}
+              >
+                <Text style={styles.BotonTexto}>Iniciar Sesión</Text>
+              </TouchableOpacity>
 
               <View style={styles.VistaExtra}>
                 <Text style={styles.TextoExtra}>
@@ -150,7 +145,15 @@ const LoginScreen = ({ navigation }) => {
                     style={styles.ContenidoEnlaceTexto}
                     onPress={() => navigation.navigate("Register")}
                   >
-                    Regístrate
+                    Regístra tu Usuario
+                  </Text>
+                  <Text
+                    style={styles.ContenidoEnlaceTexto}
+                    onPress={() =>
+                      navigation.navigate("RegisterEstablecimiento")
+                    }
+                  >
+                    Regístra tu Establecimiento
                   </Text>
                 </TouchableOpacity>
               </View>
