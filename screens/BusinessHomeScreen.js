@@ -13,7 +13,6 @@ import { getProducts, deleteProduct } from "../api/api.product";
 const BusinessHomeScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-
   const isFocused = useIsFocused();
 
   const loadProducts = async () => {
@@ -29,7 +28,6 @@ const BusinessHomeScreen = ({ navigation }) => {
   }, [isFocused]);
 
   const handleDelete = async (id) => {
-    console.log(id)
     await deleteProduct(id);
     await loadProducts();
   }
@@ -38,7 +36,7 @@ const BusinessHomeScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => {
     return <Product onPressDelete={() => handleDelete(item.id)} text={item.nombre} price={item.precio} onPress={() => {
-      navigation.navigate("TaskScreen", {id: item.id, nombre: item.nombre, descripcion: item.descripcion})
+      navigation.navigate("BProductScreen", {id: item.id, nombre: item.nombre, descripcion: item.descripcion, precio: item.precio})
     }}></Product>;
   };
 

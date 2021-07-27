@@ -18,42 +18,27 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 
 
-const TaskScreen = ({ navigation, route }) => {
+const BProductScreen = ({ navigation, route }) => {
     const [task, setTask] = useState();
 
-    const taskid = route.params.id;
-    const taskname = route.params.nombre;
-    const taskdescription = route.params.descripcion;
+    const productid = route.params.id;
+    const productname = route.params.nombre;
+    const productdescription = route.params.descripcion;
+    const productprice = route.params.precio;
 
-    /*
-    console.log(taskid)
-    console.log(taskname)
-    console.log(taskid.id)
-    */
     const isFocused = useIsFocused();
 
-    const loadTask = async () => {
-        try {
-            const data = await getTask(taskid);
-            console.log(data);
-        } catch (error) {
-            console.log(error)
-        }
-    }
-/*
-    useEffect(() => {
-        loadTask();
-      }, [isFocused]);
-*/
+    
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
-        <Text style={styles.TituloPagina}>{taskname}</Text>
+        <Text style={styles.TituloPagina}>{productname}</Text>
         <View style={styles.div}></View>
-        <Text style={styles.SubTitulo}>{taskdescription}</Text>
+        <Text style={styles.SubTituloPrecio}>{productprice}</Text>
+        <Text style={styles.SubTitulo}>{productdescription}</Text>
         <View style={styles.iconContainer}>
             <TouchableOpacity onPress={() => {
-                navigation.navigate("Update", {id: taskid, nombre: taskname, descripcion: taskdescription})
+                navigation.navigate("Update", {id: productid, nombre: productname, descripcion: productdescription, precio: productprice})
             }}>
                 <AntDesign name="edit" size={26} style={styles.icon}></AntDesign>
             </TouchableOpacity>
@@ -92,6 +77,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#3d414a",
   },
+  SubTituloPrecio: {
+    fontFamily: "Ubuntu-Bold",
+    textAlign: "center",
+    marginTop: 15,
+    fontSize: 25,
+    letterSpacing: 1,
+    fontWeight: "bold",
+    color: Colors.terciario,
+  },
   iconContainer: {
     justifyContent: 'center',
       alignItems: 'center'
@@ -102,4 +96,4 @@ const styles = StyleSheet.create({
   } 
 });
 
-export default TaskScreen;
+export default BProductScreen;

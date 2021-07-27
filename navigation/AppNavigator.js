@@ -7,8 +7,8 @@ import { Colors } from "../constants";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import AddProductScreen from "../screens/AddProductScreen";
-import UpdateTaskScreen from "../screens/UpdateTaskScreen";
-import TaskScreen from "../screens/TaskScreen";
+import UpdateProductScreen from "../screens/UpdateProductScreen";
+import BProductScreen from "../screens/BProductScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
 
 const TasksStackNavigator = createStackNavigator();
@@ -67,7 +67,7 @@ const TaskNavigator = () => {
 
       <TasksStackNavigator.Screen
         name="Update"
-        component={UpdateTaskScreen}
+        component={UpdateProductScreen}
         options={{
           ...defautlStyles,
           title: "Editar Tareas",
@@ -76,8 +76,8 @@ const TaskNavigator = () => {
       />
 
       <TasksStackNavigator.Screen
-        name="TaskScreen"
-        component={TaskScreen}
+        name="BProductScreen"
+        component={BProductScreen}
         options={{
           ...defautlStyles,
           title: "Tarea",
