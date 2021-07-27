@@ -10,8 +10,8 @@ export const getTask = async (id) => {
     return await res.json()
 }
 
-export const createTask = async (newTask) => {
-    const res = await fetch(API.HEROKU+"tareas", { 
+export const createProduct = async (newTask) => {
+    const res = await fetch(API.HEROKU+"products", { 
         method: 'POST',
         headers: { 
             Accept: "application/json", 
@@ -21,8 +21,10 @@ export const createTask = async (newTask) => {
     return  await res.json();
 }
 
-export const deleteTask = async (id) => {
-
+export const deleteProduct = async (id) => {
+    await fetch(API.HEROKU+"products/"+id, {
+        method: "DELETE",
+    })
 }
 
 export const updateTask = async (id, newTask) => {

@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import globalStyles from "../styles/global";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Colors } from "../constants";
 
-const Product = ({ text, onPress, price }) => {
+const DeleteButton = ({onPress}) => {
+  
+  return(
+        <View>
+          <TouchableOpacity onPress={onPress}>
+            <MaterialIcons  name="delete" size={27} color="#c7190c" />
+          </TouchableOpacity>
+        </View>
+  );
+};
+
+const Product = ({ text, onPress, price, onPressDelete }) => {
+
+
   return (
     <View style={styles.container}>
       <View style={globalStyles.listContainer}>
@@ -12,8 +25,13 @@ const Product = ({ text, onPress, price }) => {
           
           <Text style={styles.itemText}>{text}</Text>
           <View style={styles.price}>
-            <Text style={styles.itemText}>{price}</Text>
+            <Text style={styles.priceText}>{price}</Text>
           </View>
+
+            <TouchableOpacity onPress={onPressDelete}>
+              <MaterialIcons  name="delete" size={27} color="#c7190c" />
+            </TouchableOpacity>
+        
         </TouchableOpacity>
       </View>
     </View>
@@ -27,15 +45,18 @@ const styles = StyleSheet.create({
   },
   itemText: {
     maxWidth: "90%",
-    borderWidth: 1,
-    width: "80%",
+    width: "70%",
     fontFamily: "Ubuntu-Regular",
     fontSize: 16,
     color: "#000",
+    justifyContent: 'center'
   },
   priceText: {
     marginRight: 5,
-    color: "black",
+    
+    fontFamily: "Ubuntu-Bold",
+    fontSize: 16,
+    color: "#000",
   },
 });
 

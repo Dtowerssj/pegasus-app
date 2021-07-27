@@ -70,8 +70,8 @@ const TaskNavigator = () => {
         }}
       />
       <TasksStackNavigator.Screen
-        name="NewTask"
-        component={AddTaskScreen}
+        name="NewProduct"
+        component={AddProductScreen}
         options={{ ...defautlStyles, title: "Agregar nueva tarea" }}
       />
 

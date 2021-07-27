@@ -8,7 +8,7 @@ import CustomButton from "../components/CustomButton";
 import Product from "../components/Product";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
-import { getProducts } from "../api/api.product";
+import { getProducts, deleteProduct } from "../api/api.product";
 
 const BusinessHomeScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);
@@ -28,10 +28,16 @@ const BusinessHomeScreen = ({ navigation }) => {
     setRefreshing(false);
   }, [isFocused]);
 
+  const handleDelete = async (id) => {
+    console.log(id)
+    await deleteProduct(id);
+    await loadProducts();
+  }
+
   
 
   const renderItem = ({ item }) => {
-    return <Product text={item.nombre} price={item.precio} onPress={() => {
+    return <Product onPressDelete={() => handleDelete(item.id)} text={item.nombre} price={item.precio} onPress={() => {
       navigation.navigate("TaskScreen", {id: item.id, nombre: item.nombre, descripcion: item.descripcion})
     }}></Product>;
   };
@@ -68,7 +74,7 @@ const BusinessHomeScreen = ({ navigation }) => {
         text="Agregar nuevo producto"
         icon="plus"
         iconColor="#fff"
-        onPress={() => navigation.navigate("NewTask")}
+        onPress={() => navigation.navigate("NewProduct")}
       />
     </View>
   );
