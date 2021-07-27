@@ -10,7 +10,6 @@ import UpdateProductScreen from "../screens/UpdateProductScreen";
 import BProductScreen from "../screens/BProductScreen";
 import RegisterUserScreen from "../screens/RegisterUserScreen";
 import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen";
-import AddProductScreen from "../screens/AddProductScreen";
 import UpdateProductScreen from "../screens/UpdateProductScreen";
 import TaskScreen from "../screens/TaskScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
