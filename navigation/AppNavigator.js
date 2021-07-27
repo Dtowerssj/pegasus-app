@@ -9,6 +9,8 @@ import RegisterScreen from "../screens/RegisterScreen";
 import AddProductScreen from "../screens/AddProductScreen";
 import UpdateProductScreen from "../screens/UpdateProductScreen";
 import BProductScreen from "../screens/BProductScreen";
+import RegisterUserScreen from "../screens/RegisterUserScreen";
+import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
 
 const TasksStackNavigator = createStackNavigator();
@@ -34,7 +36,16 @@ const TaskNavigator = () => {
     <TasksStackNavigator.Navigator>
       <TasksStackNavigator.Screen
         name="Register"
-        component={RegisterScreen}
+        component={RegisterUserScreen}
+        options={{
+          ...defautlStyles,
+          title: "¡Bienvenido!",
+          headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="RegisterEstablecimiento"
+        component={RegisterEstablishmentScreen}
         options={{
           ...defautlStyles,
           title: "¡Bienvenido!",
