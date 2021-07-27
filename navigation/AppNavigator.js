@@ -6,7 +6,7 @@ import { View, StyleSheet, Alert, ToastAndroid } from "react-native";
 import { Colors } from "../constants";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
-import AddTaskScreen from "../screens/AddTaskScreen";
+import AddProductScreen from "../screens/AddProductScreen";
 import UpdateTaskScreen from "../screens/UpdateTaskScreen";
 import TaskScreen from "../screens/TaskScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
@@ -60,8 +60,8 @@ const TaskNavigator = () => {
         }}
       />
       <TasksStackNavigator.Screen
-        name="NewTask"
-        component={AddTaskScreen}
+        name="NewProduct"
+        component={AddProductScreen}
         options={{ ...defautlStyles, title: "Agregar nueva tarea" }}
       />
 

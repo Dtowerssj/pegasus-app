@@ -21,6 +21,8 @@ export default {
     borderWidth: 0.5,
     borderColor: Colors.luzoscuro,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   input: {
     borderBottomWidth: 2,
