@@ -35,7 +35,7 @@ const RegisterUserScreen = ({ navigation }) => {
 
   const handleRegisterScreen = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = "https://p3-rn-back.herokuapp.com/api/business";
+    const url = "https://p3-rn-back.herokuapp.com/api/products";
 
     axios
       .post(url, credentials)
@@ -76,6 +76,7 @@ const RegisterUserScreen = ({ navigation }) => {
           >
             home establecimientos
           </Text>
+
           <Text
             style={globalStyles.ContenidoEnlaceTexto}
             onPress={() => navigation.navigate("UserHome")}
@@ -92,20 +93,31 @@ const RegisterUserScreen = ({ navigation }) => {
             clave: "",
           }}
           onSubmit={(values) => {
-            try {
-              console.log(values);
-              createUser(values);
-              Alert.alert(
-                "Registro exitoso",
-                "Su usuario ha sido registrado exitosamente!!"
-              );
-              navigation.navigate("Login");
-            } catch (error) {
-              console.log(error);
-              Alert.alert(
-                "Registro fallido",
-                "No se pudo registrar su usuario :("
-              );
+            if (
+              values.correo == "" ||
+              values.clave == "" ||
+              values.nombre == "" ||
+              values.usuario == ""
+            ) {
+              handleMessage("Por favor llenar todos los campos");
+              setSubmitting(false);
+            } else {
+              handleRegisterScreen(values, setSubmitting);
+              try {
+                console.log(values);
+                createUser(values);
+                Alert.alert(
+                  "Registro exitoso",
+                  "Su usuario ha sido registrado exitosamente!!"
+                );
+                navigation.navigate("Login");
+              } catch (error) {
+                console.log(error);
+                Alert.alert(
+                  "Registro fallido",
+                  "No se pudo registrar su usuario :("
+                );
+              }
             }
           }}
         >

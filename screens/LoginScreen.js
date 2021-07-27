@@ -6,13 +6,7 @@ import { Formik } from "formik";
 //Iconos
 import { Octicons, Ionicons } from "@expo/vector-icons";
 
-import {
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  ActivityIndicator,
-} from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 
 // Estilos
 import styles from "./../styles/global";
@@ -29,12 +23,13 @@ const LoginScreen = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
-  const handleLogin = async () => {
+  /* const handleLogin = async () => {
     const user = await loginUser();
-  };
+  };*/
 
-  /*const handleLoginScreen = (credentials, setSubmitting) => {
+  const handleLoginScreen = (credentials, setSubmitting) => {
     handleMessage(null);
+    const url = "https://p3-rn-back.herokuapp.com/api/business";
 
     axios
       .post(url, credentials)
@@ -61,7 +56,7 @@ const LoginScreen = ({ navigation }) => {
   const handleMessage = (message, type = "FAILED") => {
     setMessage(message);
     setMessageType(type);
-  };*/
+  };
 
   return (
     <View style={styles.ContenedorEstilizado}>
