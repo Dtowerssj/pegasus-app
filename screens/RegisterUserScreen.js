@@ -32,10 +32,10 @@ const RegisterUserScreen = ({ navigation }) => {
   const [messageType, setMessageType] = useState();
 
   //form handling
-  /*
+
   const handleRegisterScreen = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = "https://wunderlist-back.herokuapp.com/";
+    const url = "https://p3-rn-back.herokuapp.com/api/business";
 
     axios
       .post(url, credentials)
@@ -58,13 +58,11 @@ const RegisterUserScreen = ({ navigation }) => {
         );
       });
   };
-  
 
   const handleMessage = (message, type = "FAILED") => {
     setMessage(message);
     setMessageType(type);
   };
-  */
 
   return (
     <ScrollView style={globalStyles.ContenedorEstilizado}>

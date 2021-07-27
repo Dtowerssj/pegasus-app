@@ -33,10 +33,8 @@ const LoginScreen = ({ navigation }) => {
     const user = await loginUser();
   };
 
-  /*
-  const handleLoginScreen = (credentials, setSubmitting) => {
+  /*const handleLoginScreen = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = "https://wunderlist-back.herokuapp.com/";
 
     axios
       .post(url, credentials)
@@ -47,7 +45,7 @@ const LoginScreen = ({ navigation }) => {
         if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {
-          navigation.navigate("Home", { ...data[0] });
+          navigation.navigate("BusinessHome", { ...data[0] });
         }
         setSubmitting(false);
       })
@@ -63,8 +61,7 @@ const LoginScreen = ({ navigation }) => {
   const handleMessage = (message, type = "FAILED") => {
     setMessage(message);
     setMessageType(type);
-  };
-  */
+  };*/
 
   return (
     <View style={styles.ContenedorEstilizado}>
@@ -74,7 +71,7 @@ const LoginScreen = ({ navigation }) => {
         <View style={styles.VistaExtra}>
           <Text
             style={styles.ContenidoEnlaceTexto}
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.navigate("BusinessHome")}
           >
             click here if login not working
           </Text>
@@ -84,14 +81,14 @@ const LoginScreen = ({ navigation }) => {
           initialValues={{ correo: "", clave: "" }}
           onSubmit={(values, { setSubmitting }) => {
             if (values.correo == "" || values.clave == "") {
-              //handleMessage("Por favor llenar todos los campos");
+              handleMessage("Por favor llenar todos los campos");
               setSubmitting(false);
             } else {
-              //handleLoginScreen(values, setSubmitting);
+              handleLoginScreen(values, setSubmitting);
               try {
                 console.log(values);
                 loginUser(values);
-                navigation.navigate("Home");
+                navigation.navigate("BusinessHome");
                 console.log("Login exitoso");
               } catch (error) {
                 console.log(error);
