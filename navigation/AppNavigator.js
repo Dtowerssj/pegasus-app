@@ -7,7 +7,7 @@ import { Colors } from "../constants";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterUserScreen from "../screens/RegisterUserScreen";
 import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen";
-import AddTaskScreen from "../screens/AddTaskScreen";
+import AddProductScreen from "../screens/AddProductScreen";
 import UpdateTaskScreen from "../screens/UpdateTaskScreen";
 import TaskScreen from "../screens/TaskScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
