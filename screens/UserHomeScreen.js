@@ -5,54 +5,55 @@ import { Colors } from "../constants/index";
 
 import globalStyles from "../styles/global";
 import CustomButton from "../components/CustomButton";
-import Task from "../components/Product";
+import Business from "../components/Business";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
-//import { getTasks } from "../api/api.tasks";
+import { getBusiness } from "../api/api.business";
 
-const HomeScreen = ({ navigation }) => {
-  const [tasks, setTasks] = useState([]);
+const UserHomeScreen = ({ navigation }) => {
+  const [business, setBusiness] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
   const isFocused = useIsFocused();
 
-  const loadTasks = async () => {
-    const data = await getTasks();
-    setTasks(data);
+  const loadBusiness = async () => {
+    const data = await getBusiness();
+    setBusiness(data);
     console.log(data);
   };
 
   useEffect(() => {
     setRefreshing(true);
-    loadTasks();
+    loadBusiness();
     setRefreshing(false);
   }, [isFocused]);
 
   
 
   const renderItem = ({ item }) => {
-    return <Task text={item.nombre}  onPress={() => {
-      navigation.navigate("TaskScreen", {id: item.id, nombre: item.nombre, descripcion: item.descripcion})
-    }}></Task>;
+    return <Business onPressDelete={() => handleDelete(item.id)} text={item.nombre} price={item.precio} onPress={() => {
+      navigation.navigate("BProductScreen", {id: item.id, nombre: item.nombre, descripcion: item.descripcion, precio: item.precio})
+    }}></Business>;
   };
 
   const onRefresh = React.useCallback(async () => {
     setRefreshing(true);
-    loadTasks();
+    loadBusiness();
     setRefreshing(false);
   })
 
+  /* Upcoming feat
   const handleSearch = () => {
 
   }
-
+  */
 
   return (
     <View style={styles.container}>
-      <SearchBar></SearchBar>
+      {/*<SearchBar></SearchBar>*/}
         <FlatList
           contentContainerStyle={globalStyles.listContainer}
-          data={tasks}
+          data={business}
           keyExtractor={(item) => item.id + ""}
           renderItem={renderItem}
           refreshControl={
@@ -63,12 +64,6 @@ const HomeScreen = ({ navigation }) => {
             />
           }
         />
-      <CustomButton
-        text="Agregar nueva tarea"
-        icon="plus"
-        iconColor="#fff"
-        onPress={() => navigation.navigate("NewTask")}
-      />
     </View>
   );
 };
@@ -79,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default UserHomeScreen;

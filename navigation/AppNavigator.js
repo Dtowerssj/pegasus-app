@@ -5,13 +5,13 @@ import { View, StyleSheet, Alert, ToastAndroid } from "react-native";
 
 import { Colors } from "../constants";
 import LoginScreen from "../screens/LoginScreen";
-import RegisterScreen from "../screens/RegisterScreen";
 import AddProductScreen from "../screens/AddProductScreen";
 import UpdateProductScreen from "../screens/UpdateProductScreen";
 import BProductScreen from "../screens/BProductScreen";
 import RegisterUserScreen from "../screens/RegisterUserScreen";
 import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
+import UserHomeScreen from "../screens/UserHomeScreen";
 
 const TasksStackNavigator = createStackNavigator();
 
@@ -67,6 +67,15 @@ const TaskNavigator = () => {
         options={{
           ...defautlStyles,
           title: "Tu catálogo",
+          headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="UserHome"
+        component={UserHomeScreen}
+        options={{
+          ...defautlStyles,
+          title: "Restaurantes disponibles",
           headerTitleAlign: "center",
         }}
       />
