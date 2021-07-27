@@ -12,6 +12,7 @@ import RegisterUserScreen from "../screens/RegisterUserScreen";
 import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
 import UserHomeScreen from "../screens/UserHomeScreen";
+import BusinessCatalogueScreen from "../screens/BusinessCatalogueScreen";
 
 const TasksStackNavigator = createStackNavigator();
 
@@ -61,21 +62,31 @@ const TaskNavigator = () => {
           headerTitleAlign: "center",
         }}
       />
-      <TasksStackNavigator.Screen
-        name="BusinessHome"
-        component={BusinessHomeScreen}
-        options={{
-          ...defautlStyles,
-          title: "Tu catálogo",
-          headerTitleAlign: "center",
-        }}
-      />
+      
       <TasksStackNavigator.Screen
         name="UserHome"
         component={UserHomeScreen}
         options={{
           ...defautlStyles,
           title: "Restaurantes disponibles",
+          headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="BusinessHome"
+        component={BusinessHomeScreen}
+        options={{
+          ...defautlStyles,
+          title: "Selecciona una opción",
+          headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="BusinessCatalogue"
+        component={BusinessCatalogueScreen}
+        options={{
+          ...defautlStyles,
+          title: "Tu catálogo",
           headerTitleAlign: "center",
         }}
       />
