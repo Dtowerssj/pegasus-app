@@ -12,9 +12,22 @@ export default {
   listContainer: {
     paddingHorizontal: 20,
   },
+  listBusinessContainer: {
+    paddingHorizontal: 0,
+  },
+
   listItem: {
     backgroundColor: "#fff",
     borderRadius: 10,
+    padding: 20,
+    marginBottom: 10,
+    borderWidth: 0.5,
+    borderColor: Colors.luzoscuro,
+    flexDirection: "row",
+  },
+  listBusinessItem: {
+    backgroundColor: "#fff",
+    borderRadius: 1,
     padding: 20,
     marginBottom: 10,
     borderWidth: 0.5,

@@ -11,31 +11,32 @@ import {
 import CustomButton from "../components/CustomButton";
 import { Colors } from "../constants";
 import globalStyles from "../styles/global";
-//import { createTask, getTask, updateTask } from "../api/api.tasks";
+import { createProduct, getProduct, updateProduct } from "../api/api.product";
 
 const DescriptionTextInput = (props) => {
   return <TextInput {...props} editable maxLength={200} />;
 };
 
-const UpdateTaskScreen = ({ navigation, route }) => {
+const UpdateProductScreen = ({ navigation, route }) => {
 
-  console.log("Parámetros de taskscreen"+route.params)
+  console.log("Parámetros de BProductScreen "+route.params)
 
-  const [task, setTask] = useState({ nombre: "", descripcion: "" });
+  const [product, setProduct] = useState({ nombre: "", descripcion: "", precio: "" });
 
   const [editing, setEditing] = useState(false);
 
-  const handleChange = (name, value) => setTask({ ...task, [name]: value });
+  const handleChange = (name, value) => setProduct({ ...product, [name]: value });
 
   const handleSubmit = async () => {
+    console.log(product)
     try {
       if (!editing) {
-        await createTask(task);
+        await createProduct(product);
       } else {
-        console.log(task)
-        await updateTask(route.params.id, task);
+        console.log(product)
+        await updateProduct(route.params.id, product);
       }
-      navigation.navigate("Home");
+      navigation.navigate("BusinessHome");
     } catch (error) {
       console.error(error);
     }
@@ -45,11 +46,11 @@ const UpdateTaskScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     if (route.params && route.params.id) {
-      navigation.setOptions({ headerTitle: "Editar Tarea" });
+      navigation.setOptions({ headerTitle: "Editar Producto" });
       setEditing(true);
       (async () => {
-        const task = await getTask(route.params.id);
-        setTask({ nombre: task.nombre, descripcion: task.descripcion });
+        const product = await getProduct(route.params.id);
+        setProduct({ nombre: product.nombre, descripcion: product.descripcion, precio: product.precio });
       })();
     }
   }, []);
@@ -62,7 +63,7 @@ const UpdateTaskScreen = ({ navigation, route }) => {
           onChangeText={(text) => handleChange("nombre", text)}
           placeholder={route.params.nombre}
           placeholderTextColor={Colors[3]}
-          value={task.nombre}
+          value={product.nombre}
         />
 
         <DescriptionTextInput
@@ -72,8 +73,19 @@ const UpdateTaskScreen = ({ navigation, route }) => {
           onChangeText={(text) => handleChange("descripcion", text)}
           placeholder={route.params.descripcion}
           placeholderTextColor={Colors[3]}
-          value={task.descripcion}
+          value={product.descripcion}
         />
+
+        <View  style={styles.priceContainer}>
+          <Text style={globalStyles.SubTitulo}>$</Text>
+          <TextInput
+            style={globalStyles.input}
+            value={product.precio}
+            onChangeText={(text) => handleChange("precio", text)}
+            placeholder={route.params.precio}
+            placeholderTextColor={Colors[3]}
+          />
+        </View>
 
         {!editing ? (
           <TouchableOpacity style={globalStyles.buttonSave} onPress={handleSubmit}>
@@ -97,6 +109,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     flex: 1,
   },
+  priceContainer: {
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
-export default UpdateTaskScreen;
+export default UpdateProductScreen;

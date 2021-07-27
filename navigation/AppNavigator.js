@@ -5,12 +5,16 @@ import { View, StyleSheet, Alert, ToastAndroid } from "react-native";
 
 import { Colors } from "../constants";
 import LoginScreen from "../screens/LoginScreen";
+import AddProductScreen from "../screens/AddProductScreen";
+import UpdateProductScreen from "../screens/UpdateProductScreen";
+import BProductScreen from "../screens/BProductScreen";
 import RegisterUserScreen from "../screens/RegisterUserScreen";
 import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen";
 import AddProductScreen from "../screens/AddProductScreen";
 import UpdateTaskScreen from "../screens/UpdateTaskScreen";
 import TaskScreen from "../screens/TaskScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
+import UserHomeScreen from "../screens/UserHomeScreen";
 
 const TasksStackNavigator = createStackNavigator();
 
@@ -70,6 +74,15 @@ const TaskNavigator = () => {
         }}
       />
       <TasksStackNavigator.Screen
+        name="UserHome"
+        component={UserHomeScreen}
+        options={{
+          ...defautlStyles,
+          title: "Restaurantes disponibles",
+          headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
         name="NewProduct"
         component={AddProductScreen}
         options={{ ...defautlStyles, title: "Agregar nueva tarea" }}
@@ -77,7 +90,7 @@ const TaskNavigator = () => {
 
       <TasksStackNavigator.Screen
         name="Update"
-        component={UpdateTaskScreen}
+        component={UpdateProductScreen}
         options={{
           ...defautlStyles,
           title: "Editar Tareas",
@@ -86,8 +99,8 @@ const TaskNavigator = () => {
       />
 
       <TasksStackNavigator.Screen
-        name="TaskScreen"
-        component={TaskScreen}
+        name="BProductScreen"
+        component={BProductScreen}
         options={{
           ...defautlStyles,
           title: "Tarea",

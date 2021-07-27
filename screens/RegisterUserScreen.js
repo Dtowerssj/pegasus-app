@@ -74,7 +74,13 @@ const RegisterUserScreen = ({ navigation }) => {
             style={globalStyles.ContenidoEnlaceTexto}
             onPress={() => navigation.navigate("BusinessHome")}
           >
-            home
+            home establecimientos
+          </Text>
+          <Text
+            style={globalStyles.ContenidoEnlaceTexto}
+            onPress={() => navigation.navigate("UserHome")}
+          >
+            home user
           </Text>
         </View>
 
