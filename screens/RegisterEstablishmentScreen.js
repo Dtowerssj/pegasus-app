@@ -12,7 +12,6 @@ import {
   TouchableOpacity,
   Text,
   TextInput,
-  Button,
   Alert,
 } from "react-native";
 
@@ -109,7 +108,7 @@ const RegisterEstablishmentScreen = ({ navigation }) => {
             <View style={globalStyles.AreaFormularioEstilizado}>
               <MiTextoEntrada
                 label="Nombre del establecimiento"
-                icon="business"
+                businness="business"
                 placeholder="Luis Acurero"
                 placeholderTextColor={Colors.luzoscuro}
                 onChangeText={handleChange("nombre")}
@@ -191,14 +190,15 @@ const MiTextoEntrada = ({
   isPassword,
   hidePassword,
   setHidePassword,
+  businness,
   isDate,
-  business,
   ...props
 }) => {
   return (
     <View>
       <View style={globalStyles.IconoIzquierdo}>
         <Octicons name={icon} size={30} color={Colors.marca} />
+        <Ionicons name={businness} size={30} color={Colors.marca} />
       </View>
       <Text style={globalStyles.EtiquetaEntradaEstilizado}>{label}</Text>
       {!isDate && (

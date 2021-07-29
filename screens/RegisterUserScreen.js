@@ -12,7 +12,6 @@ import {
   TouchableOpacity,
   Text,
   TextInput,
-  Button,
   Alert,
 } from "react-native";
 
