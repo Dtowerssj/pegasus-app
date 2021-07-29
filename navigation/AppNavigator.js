@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { View, StyleSheet, Alert, ToastAndroid } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { Colors } from "../constants";
 import LoginScreen from "../screens/LoginScreen";
@@ -62,7 +62,7 @@ const TaskNavigator = () => {
           headerTitleAlign: "center",
         }}
       />
-      
+
       <TasksStackNavigator.Screen
         name="UserHome"
         component={UserHomeScreen}
