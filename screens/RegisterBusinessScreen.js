@@ -17,25 +17,24 @@ import {
 } from "react-native";
 
 //Estilos
-import globalStyles from "./../styles/global";
-import { Colors } from "./../constants/index";
+import globalStyles from "../styles/global";
+import { Colors } from "../constants/index";
 
 //Registrar
-import { createUser } from "../api/api.users";
+import { createBusiness } from "../api/api.business";
 
 const cuenta = "¿Ya tienes una cuenta? ";
 const ini = " Inicia Sesión";
 
-const RegisterEstablishmentScreen = ({ navigation }) => {
+const RegisterBusinessScreen = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
-  //form handling
-  /*
-  const handleRegisterScreen = (credentials, setSubmitting) => {
+
+  const handleRegister = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = "https://wunderlist-back.herokuapp.com/";
+    const url = "https://p3-rn-back.herokuapp.com/api/business";
 
     axios
       .post(url, credentials)
@@ -59,48 +58,35 @@ const RegisterEstablishmentScreen = ({ navigation }) => {
       });
   };
   
-
-  const handleMessage = (message, type = "FAILED") => {
-    setMessage(message);
-    setMessageType(type);
-  };
-  */
+  
 
   return (
     <ScrollView style={globalStyles.ContenedorEstilizado}>
       <View style={globalStyles.ContenedorInterno}>
-        <Text style={globalStyles.TituloPagina}>Uber Eats</Text>
+        <Text style={globalStyles.TituloPagina}>Food Delivery</Text>
         <Text style={globalStyles.SubTitulo}>Registro de Establecimiento</Text>
-        <View style={globalStyles.VistaExtra}>
-          <Text
-            style={globalStyles.ContenidoEnlaceTexto}
-            onPress={() => navigation.navigate("BusinessHome")}
-          >
-            home
-          </Text>
-        </View>
+        
 
         <Formik
           initialValues={{
             nombre: "",
-            usuario: "",
             correo: "",
             clave: "",
           }}
           onSubmit={(values) => {
             try {
               console.log(values);
-              createUser(values);
+              handleRegister(values);
               Alert.alert(
                 "Registro exitoso",
-                "Su usuario ha sido registrado exitosamente!!"
+                "Su establecimiento ha sido registrado exitosamente!!"
               );
               navigation.navigate("Login");
             } catch (error) {
               console.log(error);
               Alert.alert(
                 "Registro fallido",
-                "No se pudo registrar su usuario :("
+                "No se pudo registrar su establecimiento"
               );
             }
           }}
@@ -109,22 +95,12 @@ const RegisterEstablishmentScreen = ({ navigation }) => {
             <View style={globalStyles.AreaFormularioEstilizado}>
               <MiTextoEntrada
                 label="Nombre del establecimiento"
-                icon="business"
+                icon="archive"
                 placeholder="Luis Acurero"
                 placeholderTextColor={Colors.luzoscuro}
                 onChangeText={handleChange("nombre")}
                 onBlur={handleBlur("nombre")}
                 value={values.nombre}
-              />
-
-              <MiTextoEntrada
-                label="Nombre de Usuario"
-                icon="person"
-                placeholder="SuperAcurero2021"
-                placeholderTextColor={Colors.luzoscuro}
-                onChangeText={handleChange("usuario")}
-                onBlur={handleBlur("usuario")}
-                value={values.usuario}
               />
 
               <MiTextoEntrada
@@ -225,4 +201,4 @@ const MiTextoEntrada = ({
   );
 };
 
-export default RegisterEstablishmentScreen;
+export default RegisterBusinessScreen;

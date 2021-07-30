@@ -6,11 +6,12 @@ import { Formik } from "formik";
 //Iconos
 import { Octicons, Ionicons } from "@expo/vector-icons";
 
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 
 // Estilos
 import styles from "./../styles/global";
 import { Colors } from "./../constants/index";
+import logo from "../assets/plogo-b.png"
 
 //
 import { loginUser } from "../api/api.users";
@@ -23,35 +24,29 @@ const LoginScreen = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
-  /* const handleLogin = async () => {
-    const user = await loginUser();
-  };*/
-
-  const handleLoginScreen = (credentials, setSubmitting) => {
+  const handleLogin = (credentials) => {
     handleMessage(null);
-    const url = "https://p3-rn-back.herokuapp.com/api/business";
+    const url = "https://p3-rn-back.herokuapp.com/api/login";
 
     axios
       .post(url, credentials)
       .then((response) => {
         const result = response.data;
         const { message, status, data } = result;
+        
+        console.log(response.data[0].message)
+        console.log("Response business: "+response.data[0].business)
+        console.log("Response id?: "+response.data[1].id)
 
-        if (status !== "SUCCESS") {
-          handleMessage(message, status);
-        } else {
-          navigation.navigate("BusinessHome", { ...data[0] });
+        if(response.data[0].status == 404) {
+          Alert.alert("Login fallido", "revise sus credenciales")
+        } else if(response.data[0].business == true) {
+          navigation.navigate("BusinessHome")
+        } else if (response.data[0].business == false) {
+          navigation.navigate("UserHome")
         }
-        setSubmitting(false);
       })
-      .catch((error) => {
-        console.log(error.JSON());
-        setSubmitting(false);
-        handleMessage(
-          "Ha ocurrido un error. Revisa tu conexión e intentalo de nuevo"
-        );
-      });
-  };
+  }; 
 
   const handleMessage = (message, type = "FAILED") => {
     setMessage(message);
@@ -61,33 +56,20 @@ const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.ContenedorEstilizado}>
       <View style={styles.ContenedorInterno}>
-        <Text style={styles.TituloPagina}>Uber Eats</Text>
-        <Text style={styles.SubTitulo}>Cuenta de Ingreso</Text>
-        <View style={styles.VistaExtra}>
-          <Text
-            style={styles.ContenidoEnlaceTexto}
-            onPress={() => navigation.navigate("BusinessHome")}
-          >
-            click here if login not working
-          </Text>
-        </View>
+        <Image source={ logo } style={{ width: 280, height: 150 }} />
+        <Text style={styles.TituloPagina}>Food Delivery</Text>
+        <Text style={styles.SubTitulo}>Inicio de sesión</Text>
+        
 
         <Formik
           initialValues={{ correo: "", clave: "" }}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values) => {
             if (values.correo == "" || values.clave == "") {
               handleMessage("Por favor llenar todos los campos");
               setSubmitting(false);
             } else {
-              handleLoginScreen(values, setSubmitting);
-              try {
-                console.log(values);
-                loginUser(values);
-                navigation.navigate("BusinessHome");
-                console.log("Login exitoso");
-              } catch (error) {
-                console.log(error);
-              }
+              
+             handleLogin(values);
             }
           }}
         >
@@ -135,17 +117,9 @@ const LoginScreen = ({ navigation }) => {
                 <TouchableOpacity style={styles.EnlaceTexto}>
                   <Text
                     style={styles.ContenidoEnlaceTexto}
-                    onPress={() => navigation.navigate("Register")}
+                    onPress={() => navigation.navigate("UserRegister")}
                   >
                     Regístra tu Usuario
-                  </Text>
-                  <Text
-                    style={styles.ContenidoEnlaceTexto}
-                    onPress={() =>
-                      navigation.navigate("RegisterEstablecimiento")
-                    }
-                  >
-                    Regístra tu Establecimiento
                   </Text>
                 </TouchableOpacity>
               </View>

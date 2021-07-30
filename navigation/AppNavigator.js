@@ -9,7 +9,7 @@ import AddProductScreen from "../screens/AddProductScreen";
 import UpdateProductScreen from "../screens/UpdateProductScreen";
 import BProductScreen from "../screens/BProductScreen";
 import RegisterUserScreen from "../screens/RegisterUserScreen";
-import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen";
+import RegisterBusinessScreen from "../screens/RegisterBusinessScreen";
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
 import UserHomeScreen from "../screens/UserHomeScreen";
 import BusinessCatalogueScreen from "../screens/BusinessCatalogueScreen";
@@ -18,7 +18,7 @@ const TasksStackNavigator = createStackNavigator();
 
 const defautlStyles = {
   headerStyle: {
-    backgroundColor: Colors[1],
+    backgroundColor: "#0097fe",
   },
   headerTintColor: "#fff",
   headerTitleStyle: {
@@ -34,26 +34,11 @@ const styles = StyleSheet.create({
 
 const TaskNavigator = () => {
   return (
+
+    
     <TasksStackNavigator.Navigator>
-      <TasksStackNavigator.Screen
-        name="Register"
-        component={RegisterUserScreen}
-        options={{
-          ...defautlStyles,
-          title: "¡Bienvenido!",
-          headerTitleAlign: "center",
-        }}
-      />
-      <TasksStackNavigator.Screen
-        name="RegisterEstablecimiento"
-        component={RegisterEstablishmentScreen}
-        options={{
-          ...defautlStyles,
-          title: "¡Bienvenido!",
-          headerTitleAlign: "center",
-        }}
-      />
-      <TasksStackNavigator.Screen
+
+    <TasksStackNavigator.Screen
         name="Login"
         component={LoginScreen}
         options={{
@@ -62,6 +47,26 @@ const TaskNavigator = () => {
           headerTitleAlign: "center",
         }}
       />
+
+      <TasksStackNavigator.Screen
+        name="UserRegister"
+        component={RegisterUserScreen}
+        options={{
+          ...defautlStyles,
+          title: "¡Bienvenido!",
+          headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="BusinessRegister"
+        component={RegisterBusinessScreen}
+        options={{
+          ...defautlStyles,
+          title: "¡Trabaja con nosotros!",
+          headerTitleAlign: "center",
+        }}
+      />
+      
       
       <TasksStackNavigator.Screen
         name="UserHome"

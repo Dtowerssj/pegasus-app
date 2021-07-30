@@ -14,17 +14,22 @@ import {
   TextInput,
   Button,
   Alert,
+  Image
 } from "react-native";
 
 //Estilos
 import globalStyles from "./../styles/global";
 import { Colors } from "./../constants/index";
+import logo from "../assets/plogo-b.png"
 
 //Registrar
 import { createUser } from "../api/api.users";
 
 const cuenta = "¿Ya tienes una cuenta? ";
 const ini = " Inicia Sesión";
+
+const Bcuenta = "¿Tienes un restaurante y deseas trabajar con nosotros? ";
+const Bini = " Click aquí";
 
 const RegisterUserScreen = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
@@ -35,7 +40,7 @@ const RegisterUserScreen = ({ navigation }) => {
 
   const handleRegisterScreen = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = "https://p3-rn-back.herokuapp.com/api/products";
+    const url = "https://p3-rn-back.herokuapp.com/api/users";
 
     axios
       .post(url, credentials)
@@ -67,26 +72,10 @@ const RegisterUserScreen = ({ navigation }) => {
   return (
     <ScrollView style={globalStyles.ContenedorEstilizado}>
       <View style={globalStyles.ContenedorInterno}>
-        <Text style={globalStyles.TituloPagina}>Uber Eats</Text>
+      <Image source={ logo } style={{ width: 280, height: 150 }} />
+        <Text style={globalStyles.TituloPagina}>Food Delivery</Text>
         <Text style={globalStyles.SubTitulo}>Registro de Usuario</Text>
-        <View style={globalStyles.VistaExtra}>
-          <Text
-            style={globalStyles.ContenidoEnlaceTexto}
-            onPress={() => navigation.navigate("BusinessHome")}
-          >
-            home establecimientos
-          </Text>
-          <Text>
-            {"\t"}
-            {"\t"}
-          </Text>
-          <Text
-            style={globalStyles.ContenidoEnlaceTexto}
-            onPress={() => navigation.navigate("UserHome")}
-          >
-            home user
-          </Text>
-        </View>
+
 
         <Formik
           initialValues={{
@@ -137,16 +126,6 @@ const RegisterUserScreen = ({ navigation }) => {
               />
 
               <MiTextoEntrada
-                label="Nombre de Usuario"
-                icon="person"
-                placeholder="SuperAcurero2021"
-                placeholderTextColor={Colors.luzoscuro}
-                onChangeText={handleChange("usuario")}
-                onBlur={handleBlur("usuario")}
-                value={values.usuario}
-              />
-
-              <MiTextoEntrada
                 label="Correo Electrónico"
                 icon="mail"
                 placeholder="juan-admin@pizzeria.com"
@@ -190,6 +169,18 @@ const RegisterUserScreen = ({ navigation }) => {
                     onPress={() => navigation.navigate("Login")}
                   >
                     {ini}
+                  </Text>
+                </Text>
+              </View>
+              
+              <View style={globalStyles.VistaExtra}>
+                <Text style={globalStyles.TextoExtra}>
+                  {Bcuenta}
+                  <Text
+                    style={globalStyles.ContenidoEnlaceTexto}
+                    onPress={() => navigation.navigate("BusinessRegister")}
+                  >
+                    {Bini}
                   </Text>
                 </Text>
               </View>

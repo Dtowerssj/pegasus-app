@@ -88,7 +88,8 @@ export default {
     borderRadius: 6,
   },
   TextoEntradaEstilizado: {
-    borderColor: "#20232a",
+    borderWidth: 0.25,
+    borderColor: "#010100",
     borderRadius: 6,
     color: Colors.secundario,
     paddingTop: 15,
