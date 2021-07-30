@@ -8,16 +8,13 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { Colors } from "../constants";
+import { Colors } from "../constants/index";
 import globalStyles from "../styles/global";
 //import { createTask, getTask, updateTask } from "../api/api.tasks";
 import CustomButton from "../components/CustomButton";
 import { useIsFocused } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-
-//Mapas
-import MapsView from "react-native-maps";
 
 const BProductScreen = ({ navigation, route }) => {
   const [task, setTask] = useState();
@@ -48,6 +45,21 @@ const BProductScreen = ({ navigation, route }) => {
             }}
           >
             <AntDesign name="edit" size={26} style={styles.icon}></AntDesign>
+          </TouchableOpacity>
+          <Text>
+            {"\t"}
+            {"\t"}
+            {"\t"}
+          </Text>
+          <TouchableOpacity style={globalStyles.EnlaceTexto}>
+            <Text
+              style={globalStyles.ContenidoEnlaceTexto}
+              onPress={() => {
+                navigation.navigate("Map");
+              }}
+            >
+              Ubicación
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

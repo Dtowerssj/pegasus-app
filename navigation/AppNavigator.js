@@ -13,6 +13,7 @@ import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen"
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
 import UserHomeScreen from "../screens/UserHomeScreen";
 import BusinessCatalogueScreen from "../screens/BusinessCatalogueScreen";
+import MapScreen from "../screens/MapScreen";
 
 const TasksStackNavigator = createStackNavigator();
 
@@ -113,6 +114,13 @@ const TaskNavigator = () => {
           ...defautlStyles,
           title: "Tarea",
           headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          ...defautlStyles,
         }}
       />
     </TasksStackNavigator.Navigator>
