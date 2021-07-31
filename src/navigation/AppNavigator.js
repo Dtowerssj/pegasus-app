@@ -13,6 +13,7 @@ import RegisterBusinessScreen from "../screens/auth/RegisterBusinessScreen";
 import BusinessHomeScreen from "../screens/business/BusinessHomeScreen";
 import UserHomeScreen from "../screens/users/UserHomeScreen";
 import BusinessCatalogueScreen from "../screens/business/BusinessCatalogueScreen";
+import RouteMapScreen from "../screens/users/RouteMapScreen";
 
 const TasksStackNavigator = createStackNavigator();
 
@@ -34,11 +35,8 @@ const styles = StyleSheet.create({
 
 const TaskNavigator = () => {
   return (
-
-    
     <TasksStackNavigator.Navigator>
-
-    <TasksStackNavigator.Screen
+      <TasksStackNavigator.Screen
         name="Login"
         component={LoginScreen}
         options={{
@@ -66,8 +64,7 @@ const TaskNavigator = () => {
           headerTitleAlign: "center",
         }}
       />
-      
-      
+
       <TasksStackNavigator.Screen
         name="UserHome"
         component={UserHomeScreen}
@@ -118,6 +115,13 @@ const TaskNavigator = () => {
           ...defautlStyles,
           title: "Tarea",
           headerTitleAlign: "center",
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="Map"
+        component={RouteMapScreen}
+        options={{
+          ...defautlStyles,
         }}
       />
     </TasksStackNavigator.Navigator>
