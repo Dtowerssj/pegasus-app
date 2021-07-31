@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ActivityIndicator, FlatList, RefreshControl, TextInput, TouchableOpacity } from "react-native";
-import SearchBar from "../components/SearchBar";
-import { Colors } from "../constants/index";
+import SearchBar from "../../components/SearchBar";
+import { Colors } from "../../constants/index";
 
-import globalStyles from "../styles/global";
-import CustomButton from "../components/CustomButton";
-import Business from "../components/Business";
+import globalStyles from "../../styles/global";
+import CustomButton from "../../components/CustomButton";
+import Business from "../../components/Business";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
-import { getBusiness } from "../api/api.business";
+import { getBusiness } from "../../api/api.business";
 
 const UserHomeScreen = ({ navigation }) => {
   const [business, setBusiness] = useState([]);

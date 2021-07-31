@@ -1,10 +1,10 @@
 import React, { useState, useRef, ForwardedRef } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet, TextInput,
   Keyboard, Alert, Picker, Text, Button, Switch, SwitchComponent } from "react-native";
-import CustomButton from "../components/CustomButton";
-import { Colors } from "../constants";
-import globalStyles from "../styles/global";
-import { createProduct } from "../api/api.product";
+import CustomButton from "../../components/CustomButton";
+import { Colors } from "../../constants";
+import globalStyles from "../../styles/global";
+import { createProduct } from "../../api/api.product";
 
 // Input de descripción
 const DescriptionTextInput = (props) => {
@@ -101,11 +101,11 @@ const styles = StyleSheet.create({
   },
   notificationText: {
     fontSize: 15,
-    fontFamily: 'Ubuntu-Regular',
+    fontFamily: 'RobotoCondensed-Regular',
   },
   noNotificationText: {
     fontSize: 12.5,
-    fontFamily: 'Ubuntu-Light',
+    fontFamily: 'RobotoCondensed-Light',
   },
   rowContainer: {
     flexDirection: 'row',
@@ -125,13 +125,13 @@ notifications: {
 },
 notificationText2: {
   fontSize: 15,
-  fontFamily: 'Ubuntu-Regular',
+  fontFamily: 'RobotoCondensed-Regular',
   marginRight: 5,
 },
 littleNotificationText: {
   fontSize: 13,
   paddingTop: 10,
-  fontFamily: 'Ubuntu-Regular',
+  fontFamily: 'RobotoCondensed-Regular',
 },
 priceContainer: {
   marginTop: 20,

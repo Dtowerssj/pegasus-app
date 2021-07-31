@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   itemText: {
     maxWidth: "90%",
     width: "70%",
-    fontFamily: "Ubuntu-Regular",
+    fontFamily: "RobotoCondensed-Regular",
     fontSize: 16,
     color: "#000",
     justifyContent: 'center',

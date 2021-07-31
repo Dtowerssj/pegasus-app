@@ -8,10 +8,10 @@ import {
   TouchableOpacity,
   StyleSheet
 } from "react-native";
-import { Colors } from "../constants";
-import globalStyles from "../styles/global";
+import { Colors } from "../../constants";
+import globalStyles from "../../styles/global";
 //import { createTask, getTask, updateTask } from "../api/api.tasks";
-import CustomButton from "../components/CustomButton";
+import CustomButton from "../../components/CustomButton";
 import { useIsFocused } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from '@expo/vector-icons';
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     color: Colors[1],
   },
   SubTitulo: {
-    fontFamily: "Ubuntu-Medium",
+    fontFamily: "RobotoCondensed-Medium",
     textAlign: "center",
     fontSize: 18,
     margin: 20,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     color: "#3d414a",
   },
   SubTituloPrecio: {
-    fontFamily: "Ubuntu-Bold",
+    fontFamily: "RobotoCondensed-Bold",
     textAlign: "center",
     marginTop: 15,
     fontSize: 25,

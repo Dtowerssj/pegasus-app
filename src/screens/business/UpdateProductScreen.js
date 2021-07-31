@@ -8,10 +8,10 @@ import {
   TouchableOpacity,
   StyleSheet
 } from "react-native";
-import CustomButton from "../components/CustomButton";
-import { Colors } from "../constants";
-import globalStyles from "../styles/global";
-import { createProduct, getProduct, updateProduct } from "../api/api.product";
+import CustomButton from "../../components/CustomButton";
+import { Colors } from "../../constants";
+import globalStyles from "../../styles/global";
+import { createProduct, getProduct, updateProduct } from "../../api/api.product";
 
 const DescriptionTextInput = (props) => {
   return <TextInput {...props} editable maxLength={200} />;

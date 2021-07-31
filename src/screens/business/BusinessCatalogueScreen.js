@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ActivityIndicator, FlatList, RefreshControl, TextInput, TouchableOpacity } from "react-native";
-import SearchBar from "../components/SearchBar";
-import { Colors } from "../constants/index";
+import SearchBar from "../../components/SearchBar";
+import { Colors } from "../../constants/index";
 
-import globalStyles from "../styles/global";
-import CustomButton from "../components/CustomButton";
-import Product from "../components/Product";
+import globalStyles from "../../styles/global";
+import CustomButton from "../../components/CustomButton";
+import Product from "../../components/Product";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
-import { getProducts, deleteProduct } from "../api/api.product";
+import { getProducts, deleteProduct } from "../../api/api.product";
 
 const BusinessCatalogueScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);

@@ -4,16 +4,16 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
-import AppNavigator from './navigation/AppNavigator';
+import AppNavigator from './src/navigation/AppNavigator';
 
 
 const App = () => {
   
   let [fontsLoaded] = useFonts({
-    'Ubuntu-Regular': require('./assets/fonts/Ubuntu-Regular.ttf'),
-    'Ubuntu-Medium': require('./assets/fonts/Ubuntu-Medium.ttf'),
-    'Ubuntu-Light': require('./assets/fonts/Ubuntu-Light.ttf'),
-    'Ubuntu-Bold': require('./assets/fonts/Ubuntu-Bold.ttf'),
+    'RobotoCondensed-Regular': require('./assets/fonts/RobotoCondensed-Regular.ttf'),
+    'RobotoCondensed-Medium': require('./assets/fonts/RobotoCondensed-BoldItalic.ttf'),
+    'RobotoCondensed-Light': require('./assets/fonts/RobotoCondensed-Light.ttf'),
+    'RobotoCondensed-Bold': require('./assets/fonts/RobotoCondensed-Bold.ttf'),
   });
 
   if (!fontsLoaded) {

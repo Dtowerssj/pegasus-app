@@ -3,16 +3,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { View, StyleSheet, Alert, ToastAndroid } from "react-native";
 
-import { Colors } from "../constants";
-import LoginScreen from "../screens/LoginScreen";
-import AddProductScreen from "../screens/AddProductScreen";
-import UpdateProductScreen from "../screens/UpdateProductScreen";
-import BProductScreen from "../screens/BProductScreen";
-import RegisterUserScreen from "../screens/RegisterUserScreen";
-import RegisterBusinessScreen from "../screens/RegisterBusinessScreen";
-import BusinessHomeScreen from "../screens/BusinessHomeScreen";
-import UserHomeScreen from "../screens/UserHomeScreen";
-import BusinessCatalogueScreen from "../screens/BusinessCatalogueScreen";
+import { Colors } from "../constants/index";
+import LoginScreen from "../screens/auth/LoginScreen";
+import AddProductScreen from "../screens/business/AddProductScreen";
+import UpdateProductScreen from "../screens/business/UpdateProductScreen";
+import BProductScreen from "../screens/business/BProductScreen";
+import RegisterUserScreen from "../screens/auth/RegisterUserScreen";
+import RegisterBusinessScreen from "../screens/auth/RegisterBusinessScreen";
+import BusinessHomeScreen from "../screens/business/BusinessHomeScreen";
+import UserHomeScreen from "../screens/users/UserHomeScreen";
+import BusinessCatalogueScreen from "../screens/business/BusinessCatalogueScreen";
 
 const TasksStackNavigator = createStackNavigator();
 
@@ -22,7 +22,7 @@ const defautlStyles = {
   },
   headerTintColor: "#fff",
   headerTitleStyle: {
-    fontFamily: "Ubuntu-Medium",
+    fontFamily: "RobotoCondensed-Medium",
   },
 };
 

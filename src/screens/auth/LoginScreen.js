@@ -9,12 +9,12 @@ import { Octicons, Ionicons } from "@expo/vector-icons";
 import { Alert, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 
 // Estilos
-import styles from "./../styles/global";
-import { Colors } from "./../constants/index";
-import logo from "../assets/plogo-b.png"
+import styles from "../../styles/global";
+import { Colors } from "../../constants/index";
+import logo from "../../../assets/plogo-b.png";
 
 //
-import { loginUser } from "../api/api.users";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Cliente de axios
 import axios from "axios";
@@ -24,25 +24,49 @@ const LoginScreen = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
-  const handleLogin = (credentials) => {
+  const storeToken = async (user) => {
+    try {
+      await AsyncStorage.setItem("user", JSON.stringify(user));
+   } catch (error) {
+     console.log("Something went wrong", error);
+   }
+  }
+
+  const getToken = async () => {
+    try {
+      let userData = await AsyncStorage.getItem("user");
+      const data = JSON.parse(userData);
+      console.log("Data del token del user: "+data.nombre);
+      return data;
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+  }
+
+  const handleLogin = async (credentials) => {
     handleMessage(null);
     const url = "https://p3-rn-back.herokuapp.com/api/login";
-
+    
     axios
       .post(url, credentials)
       .then((response) => {
         const result = response.data;
         const { message, status, data } = result;
         
-        console.log(response.data[0].message)
-        console.log("Response business: "+response.data[0].business)
-        console.log("Response id?: "+response.data[1].id)
-
         if(response.data[0].status == 404) {
           Alert.alert("Login fallido", "revise sus credenciales")
         } else if(response.data[0].business == true) {
-          navigation.navigate("BusinessHome")
+          try {
+            storeToken(response.data[1]); 
+            getToken()
+            navigation.navigate("BusinessHome")
+          } catch (error) {
+            console.log(error)
+          }
+          
         } else if (response.data[0].business == false) {
+          storeToken(response.data[1]); 
+          getToken()
           navigation.navigate("UserHome")
         }
       })

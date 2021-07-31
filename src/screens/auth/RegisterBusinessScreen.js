@@ -17,11 +17,12 @@ import {
 } from "react-native";
 
 //Estilos
-import globalStyles from "../styles/global";
-import { Colors } from "../constants/index";
+import globalStyles from "../../styles/global";
+import { Colors } from "../../constants/index";
+import logo from "../../../assets/plogo-b.png";
 
 //Registrar
-import { createBusiness } from "../api/api.business";
+import { createBusiness } from "../../api/api.business";
 
 const cuenta = "¿Ya tienes una cuenta? ";
 const ini = " Inicia Sesión";

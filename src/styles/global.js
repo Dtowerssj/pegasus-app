@@ -7,7 +7,7 @@ export default {
   noData: {
     textAlign: "center",
     fontSize: 18,
-    fontFamily: "Ubuntu-Regular",
+    fontFamily: "RobotoCondensed-Regular",
   },
   listContainer: {
     paddingHorizontal: 20,
@@ -38,7 +38,7 @@ export default {
     borderBottomWidth: 2,
     borderBottomColor: Colors[4],
     borderStyle: "solid",
-    fontFamily: "Ubuntu-Light",
+    fontFamily: "RobotoCondensed-Light",
     fontSize: 20,
     lineHeight: 28,
     marginBottom: 30,
@@ -52,7 +52,7 @@ export default {
   },
   switchText: {
     fontSize: 18,
-    fontFamily: "Ubuntu-Regular",
+    fontFamily: "RobotoCondensed-Regular",
   },
   ContenedorEstilizado: {
     flex: 1,
@@ -75,7 +75,7 @@ export default {
     color: Colors.marca,
   },
   SubTitulo: {
-    fontFamily: "Ubuntu-Bold",
+    fontFamily: "RobotoCondensed-Regular",
     fontSize: 18,
     marginBottom: 20,
     letterSpacing: 1,
@@ -101,13 +101,13 @@ export default {
     marginVertical: 3,
     marginBottom: 10,
     color: Colors.terciario,
-    fontFamily: "Ubuntu-Light",
+    fontFamily: "RobotoCondensed-Light",
   },
   EtiquetaEntradaEstilizado: {
     color: Colors.terciario,
     fontSize: 13,
     textAlign: "left",
-    fontFamily: "Ubuntu-Medium",
+    fontFamily: "RobotoCondensed-Medium",
     borderColor: "#20232a",
     borderRadius: 6,
   },
@@ -137,12 +137,12 @@ export default {
     borderBottomLeftRadius: 5,
     marginVertical: 5,
     height: 60,
-    fontFamily: "Ubuntu-Regular",
+    fontFamily: "RobotoCondensed-Regular",
   },
   BotonTexto: {
     fontSize: 16,
     color: "white",
-    fontFamily: "Ubuntu-Regular",
+    fontFamily: "RobotoCondensed-Regular",
   },
   CajaMensaje: {
     textAlign: "center",
@@ -172,12 +172,12 @@ export default {
   EnlaceTexto: {
     justifyContent: "center",
     alignItems: "center",
-    fontFamily: "Ubuntu-Regular",
+    fontFamily: "RobotoCondensed-Regular",
   },
   ContenidoEnlaceTexto: {
     color: Colors.marca,
     fontSize: 15,
-    fontFamily: "Ubuntu-Regular",
+    fontFamily: "RobotoCondensed-Regular",
   },
   ActivityIndicator: {
     size: "large",

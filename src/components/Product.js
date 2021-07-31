@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   itemText: {
     maxWidth: "90%",
     width: "70%",
-    fontFamily: "Ubuntu-Regular",
+    fontFamily: "RobotoCondensed-Regular",
     fontSize: 16,
     color: "#000",
     justifyContent: 'center'
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   priceText: {
     marginRight: 5,
     
-    fontFamily: "Ubuntu-Bold",
+    fontFamily: "RobotoCondensed-Bold",
     fontSize: 16,
     color: "#000",
   },

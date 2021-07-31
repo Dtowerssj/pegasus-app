@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    fontFamily: 'Ubuntu-Light',
+    fontFamily: 'RobotoCondensed-Light',
     color: '#fff',
   },
   icon: {
