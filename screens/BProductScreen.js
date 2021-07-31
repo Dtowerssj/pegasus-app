@@ -55,7 +55,7 @@ const BProductScreen = ({ navigation, route }) => {
             <Text
               style={globalStyles.ContenidoEnlaceTexto}
               onPress={() => {
-                navigation.navigate("Map");
+                navigation.navigate("MapView");
               }}
             >
               Ubicación

@@ -13,7 +13,8 @@ import RegisterEstablishmentScreen from "../screens/RegisterEstablishmentScreen"
 import BusinessHomeScreen from "../screens/BusinessHomeScreen";
 import UserHomeScreen from "../screens/UserHomeScreen";
 import BusinessCatalogueScreen from "../screens/BusinessCatalogueScreen";
-import MapScreen from "../screens/MapScreen";
+import RouteMapScreen from "../screens/RouteMapScreen";
+import MapViewDirectionsScreen from "../screens/MapViewDirectionsScreen";
 
 const TasksStackNavigator = createStackNavigator();
 
@@ -117,8 +118,8 @@ const TaskNavigator = () => {
         }}
       />
       <TasksStackNavigator.Screen
-        name="Map"
-        component={MapScreen}
+        name="RouteMap"
+        component={RouteMapScreen}
         options={{
           ...defautlStyles,
         }}
