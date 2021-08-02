@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   TouchableWithoutFeedback,
-  TextInput,
   Keyboard,
   Text,
   TouchableOpacity,
@@ -11,10 +10,9 @@ import {
 import { Colors } from "../../constants";
 import globalStyles from "../../styles/global";
 //import { createTask, getTask, updateTask } from "../api/api.tasks";
-import CustomButton from "../../components/CustomButton";
 import { useIsFocused } from "@react-navigation/native";
-import { AntDesign } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
+import { style } from "styled-system";
 
 const BProductScreen = ({ navigation, route }) => {
   const [task, setTask] = useState();
@@ -51,8 +49,15 @@ const BProductScreen = ({ navigation, route }) => {
               style={globalStyles.ContenidoEnlaceTexto}
               onPress={() => navigation.navigate("Map")}
             >
-              Ubicación
+              Ver Ubicación
             </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("ShoppingCart")}>
+            <FontAwesome5
+              name="shopping-cart"
+              size={24}
+              style={styles.icon}
+            ></FontAwesome5>
           </TouchableOpacity>
         </View>
       </View>

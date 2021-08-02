@@ -14,6 +14,8 @@ import BusinessHomeScreen from "../screens/business/BusinessHomeScreen";
 import UserHomeScreen from "../screens/users/UserHomeScreen";
 import BusinessCatalogueScreen from "../screens/business/BusinessCatalogueScreen";
 import RouteMapScreen from "../screens/users/RouteMapScreen";
+import PaymentScreen from "../screens/users/PaymentSceen";
+import ShoppingCartScreen from "../screens/users/ShoppingCartScreen";
 
 const TasksStackNavigator = createStackNavigator();
 
@@ -120,6 +122,20 @@ const TaskNavigator = () => {
       <TasksStackNavigator.Screen
         name="Map"
         component={RouteMapScreen}
+        options={{
+          ...defautlStyles,
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="Payment"
+        component={PaymentScreen}
+        options={{
+          ...defautlStyles,
+        }}
+      />
+      <TasksStackNavigator.Screen
+        name="ShoppingCart"
+        component={ShoppingCartScreen}
         options={{
           ...defautlStyles,
         }}
