@@ -2,33 +2,28 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   TouchableWithoutFeedback,
-  TextInput,
   Keyboard,
   Text,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 import { Colors } from "../../constants";
 import globalStyles from "../../styles/global";
 //import { createTask, getTask, updateTask } from "../api/api.tasks";
-import CustomButton from "../../components/CustomButton";
 import { useIsFocused } from "@react-navigation/native";
-import { AntDesign } from "@expo/vector-icons";
-import { MaterialIcons } from '@expo/vector-icons';
-
-
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
+import { style } from "styled-system";
 
 const BProductScreen = ({ navigation, route }) => {
-    const [task, setTask] = useState();
+  const [task, setTask] = useState();
 
-    const productid = route.params.id;
-    const productname = route.params.nombre;
-    const productdescription = route.params.descripcion;
-    const productprice = route.params.precio;
+  const productid = route.params.id;
+  const productname = route.params.nombre;
+  const productdescription = route.params.descripcion;
+  const productprice = route.params.precio;
 
-    const isFocused = useIsFocused();
+  const isFocused = useIsFocused();
 
-    
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
@@ -37,11 +32,33 @@ const BProductScreen = ({ navigation, route }) => {
         <Text style={styles.SubTituloPrecio}>{productprice}</Text>
         <Text style={styles.SubTitulo}>{productdescription}</Text>
         <View style={styles.iconContainer}>
-            <TouchableOpacity onPress={() => {
-                navigation.navigate("Update", {id: productid, nombre: productname, descripcion: productdescription, precio: productprice})
-            }}>
-                <AntDesign name="edit" size={26} style={styles.icon}></AntDesign>
-            </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Update", {
+                id: productid,
+                nombre: productname,
+                descripcion: productdescription,
+                precio: productprice,
+              });
+            }}
+          >
+            <AntDesign name="edit" size={26} style={styles.icon}></AntDesign>
+          </TouchableOpacity>
+          <TouchableOpacity style={globalStyles.EnlaceTexto}>
+            <Text
+              style={globalStyles.ContenidoEnlaceTexto}
+              onPress={() => navigation.navigate("Map")}
+            >
+              Ver Ubicación
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("ShoppingCart")}>
+            <FontAwesome5
+              name="shopping-cart"
+              size={24}
+              style={styles.icon}
+            ></FontAwesome5>
+          </TouchableOpacity>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -56,7 +73,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   div: {
-      borderTopWidth: 1
+    borderTopWidth: 1,
   },
   TituloPagina: {
     fontSize: 30,
@@ -87,13 +104,12 @@ const styles = StyleSheet.create({
     color: Colors.terciario,
   },
   iconContainer: {
-    justifyContent: 'center',
-      alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   icon: {
-      color: Colors.luzoscuro,
-      
-  } 
+    color: Colors.luzoscuro,
+  },
 });
 
 export default BProductScreen;
