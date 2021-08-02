@@ -19,10 +19,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // Cliente de axios
 import axios from "axios";
 
+import { doLogin } from "../../api/api.auth";
+
+
 const LoginScreen = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
+
+  
 
   const storeToken = async (user) => {
     try {
@@ -33,15 +38,19 @@ const LoginScreen = ({ navigation }) => {
   }
 
   const getToken = async () => {
+    let userData;
     try {
-      let userData = await AsyncStorage.getItem("user");
+      userData = await AsyncStorage.getItem("user");
       const data = JSON.parse(userData);
       console.log("Data del token del user: "+data.nombre);
       return data;
     } catch (error) {
       console.log("Something went wrong", error);
     }
+    return userData;
   }
+
+  
 
   const handleLogin = async (credentials) => {
     handleMessage(null);
@@ -58,8 +67,7 @@ const LoginScreen = ({ navigation }) => {
         } else if(response.data[0].business == true) {
           try {
             storeToken(response.data[1]); 
-            getToken()
-            navigation.navigate("BusinessHome")
+            //navigation.navigate("BusinessHome")
           } catch (error) {
             console.log(error)
           }
@@ -67,7 +75,7 @@ const LoginScreen = ({ navigation }) => {
         } else if (response.data[0].business == false) {
           storeToken(response.data[1]); 
           getToken()
-          navigation.navigate("UserHome")
+          //navigation.navigate("UserHome")
         }
       })
   }; 
@@ -90,10 +98,11 @@ const LoginScreen = ({ navigation }) => {
           onSubmit={(values) => {
             if (values.correo == "" || values.clave == "") {
               handleMessage("Por favor llenar todos los campos");
-              setSubmitting(false);
+              //setSubmitting(false);
             } else {
               
-             handleLogin(values);
+              doLogin.signIn(values);
+             //handleLogin(values);
             }
           }}
         >
@@ -131,6 +140,14 @@ const LoginScreen = ({ navigation }) => {
                 onPress={handleSubmit}
               >
                 <Text style={styles.BotonTexto}>Iniciar Sesión</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.BotonEstilizado}
+                onPress={() => {
+                  console.log(getToken());
+                }}
+              >
+                <Text style={styles.BotonTexto}>check</Text>
               </TouchableOpacity>
 
               <View style={styles.VistaExtra}>
