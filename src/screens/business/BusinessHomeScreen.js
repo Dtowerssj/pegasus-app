@@ -10,13 +10,17 @@ import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
 import { getProducts, deleteProduct } from "../../api/api.product";
 import MenuButton from "../../components/MenuButton";
+import { AuthContext } from "../../navigation/AppNavigator";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const BusinessHomeScreen = ({ navigation }) => {
+  const { signOut } = React.useContext(AuthContext);
 
   return (
     <View style={styles.container}>
         <MenuButton text="Mi Catálogo" onPress={() => navigation.navigate("BusinessCatalogue")} ></MenuButton>
         <MenuButton text="Mi cuenta" onPress={() => console.log("Crud de cuenta de establecimientos")}></MenuButton>
+        <CustomButton text="cerrar sesión" onPress={signOut}></CustomButton>
     </View>
   );
 };
