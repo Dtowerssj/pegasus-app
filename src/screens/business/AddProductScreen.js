@@ -1,4 +1,4 @@
-import React, { useState, useRef, ForwardedRef } from "react";
+import React, { useState, useRef, ForwardedRef, useEffect } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet, TextInput,
   Keyboard, Alert, Picker, Text, Button, Switch, SwitchComponent } from "react-native";
 import CustomButton from "../../components/CustomButton";
@@ -15,12 +15,14 @@ const DescriptionTextInput = (props) => {
 
 const AddProductScreen = ({ navigation }) => {
 
-  const userData = getToken();
-  id_establecimiento = userData.id;
-
-  const [product, setProduct] = useState({ nombre: '', descripcion: '', precio: '', id_establecimiento: id_establecimiento });
+  const [product, setProduct] = useState({ nombre: '', descripcion: '', precio: '', id_establecimiento: id });
   const handleChange = (name, value) => setProduct({...product, [name]: value  });
 
+  const getBusinessId = async () => {
+    let userData = await getToken();
+    let id_establecimiento = userData.id;
+    product.id_establecimiento = id_establecimiento;
+  }
 
 
   const handleSubmit = () => {
@@ -37,9 +39,10 @@ const AddProductScreen = ({ navigation }) => {
       );
     } else {
       try {
+        getBusinessId();
         console.log(product);
         createProduct(product);
-        navigation.navigate("Business")
+        navigation.navigate("BusinessHome")
       } catch (error) {
         console.log(error);
       }

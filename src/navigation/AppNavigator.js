@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-  useReducer,
-  useContext,
-  useMemo,
-} from "react";
-=======
 import React, { useEffect, useState } from "react";
->>>>>>> 3f7c9fa50ddf51e834c132b26dc1e95914798681
 
 // Navigators
 import { NavigationContainer } from "@react-navigation/native";
@@ -31,84 +20,6 @@ import RegisterBusinessScreen from "../screens/auth/RegisterBusinessScreen";
 import BusinessHomeScreen from "../screens/business/BusinessHomeScreen";
 import UserHomeScreen from "../screens/users/UserHomeScreen";
 import BusinessCatalogueScreen from "../screens/business/BusinessCatalogueScreen";
-<<<<<<< HEAD
-//import RouteMapScreen from "../screens/users/RouteMapScreen";
-import PaymentScreen from "../screens/users/PaymentSceen";
-import MapScreen from "../screens/users/MapScreen";
-
-const authContext = React.useMemo(
-  () => ({
-    signIn: (credentials) => {
-      // In a production app, we need to send some data (usually username, password) to server and get a token
-      // We will also need to handle errors if sign in failed
-      // After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
-      // In the example, we'll use a dummy token
-
-      const userData = doLogin(credentials);
-
-      dispatch({ type: "SIGN_IN", token: userData });
-    },
-    signOut: () => dispatch({ type: "SIGN_OUT" }),
-    signUp: async (data) => {
-      // In a production app, we need to send user data to server and get a token
-      // We will also need to handle errors if sign up failed
-      // After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
-      // In the example, we'll use a dummy token
-
-      dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
-    },
-  }),
-  []
-);
-
-return (
-  <AuthContext.Provider value={authContext}>
-    <NavigationContainer>
-      <StackNavigator.Navigator>
-        {state.userToken == null ? (
-          <>
-            <StackNavigator.Screen
-              name="Login"
-              component={LoginScreen}
-              options={{
-                ...defautlStyles,
-                title: "Inicia sesión",
-                headerTitleAlign: "center",
-                animationTypeForReplace: state.isSignout ? "pop" : "push",
-              }}
-            />
-            <StackNavigator.Screen
-              name="UserRegister"
-              component={RegisterUserScreen}
-              options={{
-                ...defautlStyles,
-                title: "¡Bienvenido!",
-                headerTitleAlign: "center",
-              }}
-            />
-            <StackNavigator.Screen
-              name="BusinessRegister"
-              component={RegisterBusinessScreen}
-              options={{
-                ...defautlStyles,
-                title: "¡Trabaja con nosotros!",
-                headerTitleAlign: "center",
-              }}
-            />
-          </>
-        ) : (
-          <>
-            <StackNavigator.Screen
-              name="Mi catálogo"
-              component={BusinessDrawerRoutes}
-            />
-          </>
-        )}
-      </StackNavigator.Navigator>
-    </NavigationContainer>
-  </AuthContext.Provider>
-);
-=======
 
 import { isBusiness } from "../screens/auth/LoginScreen";
 
@@ -253,7 +164,6 @@ const AppNavigator = () => {
       </NavigationContainer>
   );
 };
->>>>>>> 3f7c9fa50ddf51e834c132b26dc1e95914798681
 
 const defautlStyles = {
   headerStyle: {
