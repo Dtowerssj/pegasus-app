@@ -1,11 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-  useReducer,
-  useContext,
-  useMemo,
-} from "react";
+import React, { useEffect, useState } from "react";
 
 // Navigators
 import { NavigationContainer } from "@react-navigation/native";
@@ -27,82 +20,150 @@ import RegisterBusinessScreen from "../screens/auth/RegisterBusinessScreen";
 import BusinessHomeScreen from "../screens/business/BusinessHomeScreen";
 import UserHomeScreen from "../screens/users/UserHomeScreen";
 import BusinessCatalogueScreen from "../screens/business/BusinessCatalogueScreen";
-//import RouteMapScreen from "../screens/users/RouteMapScreen";
-import PaymentScreen from "../screens/users/PaymentSceen";
-import MapScreen from "../screens/users/MapScreen";
 
-const authContext = React.useMemo(
-  () => ({
-    signIn: (credentials) => {
-      // In a production app, we need to send some data (usually username, password) to server and get a token
-      // We will also need to handle errors if sign in failed
-      // After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
-      // In the example, we'll use a dummy token
+import { isBusiness } from "../screens/auth/LoginScreen";
 
-      const userData = doLogin(credentials);
+// Async storage
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { doLogin } from "../api/api.auth";
 
-      dispatch({ type: "SIGN_IN", token: userData });
-    },
-    signOut: () => dispatch({ type: "SIGN_OUT" }),
-    signUp: async (data) => {
-      // In a production app, we need to send user data to server and get a token
-      // We will also need to handle errors if sign up failed
-      // After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
-      // In the example, we'll use a dummy token
 
-      dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
-    },
-  }),
-  []
-);
+const StackNavigator = createStackNavigator();
+const DrawerNavigator = createDrawerNavigator();
 
-return (
-  <AuthContext.Provider value={authContext}>
-    <NavigationContainer>
+
+const BusinessDrawerRoutes = () => {
+  return(
+      <DrawerNavigator.Navigator initialRouteName="BusinessHome">
+      
+        <DrawerNavigator.Screen
+          name="BusinessHome"
+          component={BusinessHomeScreen}
+          options={{
+            ...defautlStyles,
+            title: "Mi catálogo",
+            headerTitleAlign: "center",
+          }}  
+        />
+        <DrawerNavigator.Screen
+          name="BusinessCatalogue"
+          component={BusinessCatalogueScreen}
+        />
+        <DrawerNavigator.Screen
+          name="NewProduct"
+          component={AddProductScreen}
+        />
+
+        <DrawerNavigator.Screen
+          name="Update"
+          component={UpdateProductScreen}
+        />
+
+      </DrawerNavigator.Navigator>
+  );
+}
+
+const UserDrawerRoutes = () => {
+  return(
+      <DrawerNavigator.Navigator initialRouteName="UserHome">
+      <DrawerNavigator.Screen
+          name="UserHome"
+          component={UserHomeScreen}
+        />
+
+      </DrawerNavigator.Navigator>
+  );
+}
+
+
+const AppNavigator = () => {
+
+ 
+
+
+  return (
+      <NavigationContainer>
+        
       <StackNavigator.Navigator>
-        {state.userToken == null ? (
-          <>
-            <StackNavigator.Screen
-              name="Login"
-              component={LoginScreen}
-              options={{
-                ...defautlStyles,
-                title: "Inicia sesión",
-                headerTitleAlign: "center",
-                animationTypeForReplace: state.isSignout ? "pop" : "push",
-              }}
-            />
-            <StackNavigator.Screen
-              name="UserRegister"
-              component={RegisterUserScreen}
-              options={{
-                ...defautlStyles,
-                title: "¡Bienvenido!",
-                headerTitleAlign: "center",
-              }}
-            />
-            <StackNavigator.Screen
-              name="BusinessRegister"
-              component={RegisterBusinessScreen}
-              options={{
-                ...defautlStyles,
-                title: "¡Trabaja con nosotros!",
-                headerTitleAlign: "center",
-              }}
-            />
-          </>
-        ) : (
-          <>
-            <StackNavigator.Screen
-              name="Mi catálogo"
-              component={BusinessDrawerRoutes}
-            />
-          </>
-        )}
+
+        <StackNavigator.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
+          ...defautlStyles,
+          title: "Inicia sesión",
+          headerTitleAlign: "center",
+        }}
+        />
+        <StackNavigator.Screen
+        name="UserRegister"
+        component={RegisterUserScreen}
+        options={{
+          ...defautlStyles,
+          title: "¡Bienvenido!",
+          headerTitleAlign: "center",
+        }}
+      />
+      <StackNavigator.Screen
+        name="BusinessRegister"
+        component={RegisterBusinessScreen}
+        options={{
+          ...defautlStyles,
+          title: "¡Trabaja con nosotros!",
+          headerTitleAlign: "center",
+        }}
+      />
+      
+      <StackNavigator.Screen
+        name="BusinessHome"
+        component={BusinessHomeScreen}
+        options={{
+          ...defautlStyles,
+          title: "Selecciona una opción",
+          headerTitleAlign: "center",
+        }}
+      />
+      <StackNavigator.Screen
+        name="BusinessCatalogue"
+        component={BusinessCatalogueScreen}
+        options={{
+          ...defautlStyles,
+          title: "Tu catálogo",
+          headerTitleAlign: "center",
+        }}
+      />
+      <StackNavigator.Screen
+        name="NewProduct"
+        component={AddProductScreen}
+        options={{ ...defautlStyles, title: "Agregar nueva tarea" }}
+      />
+
+      <StackNavigator.Screen
+        name="Update"
+        component={UpdateProductScreen}
+        options={{
+          ...defautlStyles,
+          title: "Editar Tareas",
+          headerTitleAlign: "center",
+        }}
+      />
+
+      <StackNavigator.Screen
+        name="BProductScreen"
+        component={BProductScreen}
+        options={{
+          ...defautlStyles,
+          title: "Tarea",
+          headerTitleAlign: "center",
+        }}
+      />
+
+
+        
       </StackNavigator.Navigator>
-    </NavigationContainer>
-  </AuthContext.Provider>
-);
+      </NavigationContainer>
+  );
+};
 
 const defautlStyles = {
   headerStyle: {
@@ -120,114 +181,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const TaskNavigator = () => {
-  return (
-    <TasksStackNavigator.Navigator>
-      <TasksStackNavigator.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{
-          ...defautlStyles,
-          title: "Inicia sesión",
-          headerTitleAlign: "center",
-        }}
-      />
 
-      <TasksStackNavigator.Screen
-        name="UserRegister"
-        component={RegisterUserScreen}
-        options={{
-          ...defautlStyles,
-          title: "¡Bienvenido!",
-          headerTitleAlign: "center",
-        }}
-      />
-      <TasksStackNavigator.Screen
-        name="BusinessRegister"
-        component={RegisterBusinessScreen}
-        options={{
-          ...defautlStyles,
-          title: "¡Trabaja con nosotros!",
-          headerTitleAlign: "center",
-        }}
-      />
-
-      <TasksStackNavigator.Screen
-        name="UserHome"
-        component={UserHomeScreen}
-        options={{
-          ...defautlStyles,
-          title: "Restaurantes disponibles",
-          headerTitleAlign: "center",
-        }}
-      />
-      <TasksStackNavigator.Screen
-        name="BusinessHome"
-        component={BusinessHomeScreen}
-        options={{
-          ...defautlStyles,
-          title: "Selecciona una opción",
-          headerTitleAlign: "center",
-        }}
-      />
-      <TasksStackNavigator.Screen
-        name="BusinessCatalogue"
-        component={BusinessCatalogueScreen}
-        options={{
-          ...defautlStyles,
-          title: "Tu catálogo",
-          headerTitleAlign: "center",
-        }}
-      />
-      <TasksStackNavigator.Screen
-        name="NewProduct"
-        component={AddProductScreen}
-        options={{ ...defautlStyles, title: "Agregar nueva tarea" }}
-      />
-
-      <TasksStackNavigator.Screen
-        name="Update"
-        component={UpdateProductScreen}
-        options={{
-          ...defautlStyles,
-          title: "Editar Tareas",
-          headerTitleAlign: "center",
-        }}
-      />
-
-      <TasksStackNavigator.Screen
-        name="BProductScreen"
-        component={BProductScreen}
-        options={{
-          ...defautlStyles,
-          title: "Tarea",
-          headerTitleAlign: "center",
-        }}
-      />
-      <TasksStackNavigator.Screen
-        name="Map"
-        component={MapScreen}
-        options={{
-          ...defautlStyles,
-        }}
-      />
-      <TasksStackNavigator.Screen
-        name="Payment"
-        component={PaymentScreen}
-        options={{
-          ...defautlStyles,
-        }}
-      />
-    </TasksStackNavigator.Navigator>
-  );
-};
-
-const AppNavigator = () => {
-  return (
-    <NavigationContainer>
-      <TaskNavigator />
-    </NavigationContainer>
-  );
-};
 
 export default AppNavigator;
