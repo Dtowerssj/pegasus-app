@@ -1,6 +1,6 @@
 export const Colors = {
   1: "#010100",
-  2: "#ESE6F8",
+  2: "#004d80",
   3: "#ddd",
   4: "#aaa",
   danger: "#DC143C",

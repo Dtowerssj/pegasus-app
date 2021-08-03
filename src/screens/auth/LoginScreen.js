@@ -22,6 +22,7 @@ import axios from "axios";
 import { doLogin } from "../../api/api.auth";
 
 
+
 const LoginScreen = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
@@ -66,16 +67,15 @@ const LoginScreen = ({ navigation }) => {
           Alert.alert("Login fallido", "revise sus credenciales")
         } else if(response.data[0].business == true) {
           try {
-            storeToken(response.data[1]); 
-            //navigation.navigate("BusinessHome")
+            storeToken(response.data[1]);
+            navigation.navigate("BusinessHome")
           } catch (error) {
             console.log(error)
           }
           
         } else if (response.data[0].business == false) {
           storeToken(response.data[1]); 
-          getToken()
-          //navigation.navigate("UserHome")
+          navigation.navigate("UserHome")
         }
       })
   }; 
@@ -101,7 +101,7 @@ const LoginScreen = ({ navigation }) => {
               //setSubmitting(false);
             } else {
               
-              doLogin.signIn(values);
+              handleLogin(values);
              //handleLogin(values);
             }
           }}

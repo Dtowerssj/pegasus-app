@@ -9,6 +9,7 @@ import Product from "../../components/Product";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
 import { getProducts, deleteProduct } from "../../api/api.product";
+import { getToken } from "../../api/api.auth";
 
 const BusinessCatalogueScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);
@@ -16,10 +17,12 @@ const BusinessCatalogueScreen = ({ navigation }) => {
   const isFocused = useIsFocused();
 
   const loadProducts = async () => {
-    const data = await getProducts();
+    const userData = await getToken();
+    id_establecimiento = userData.id;
+    const data = await getProducts(id_establecimiento);
     setProducts(data);
-    console.log(data);
   };
+
 
   useEffect(() => {
     setRefreshing(true);

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {
   useCallback,
   useEffect,
@@ -6,6 +7,9 @@ import React, {
   useContext,
   useMemo,
 } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 3f7c9fa50ddf51e834c132b26dc1e95914798681
 
 // Navigators
 import { NavigationContainer } from "@react-navigation/native";
@@ -27,6 +31,7 @@ import RegisterBusinessScreen from "../screens/auth/RegisterBusinessScreen";
 import BusinessHomeScreen from "../screens/business/BusinessHomeScreen";
 import UserHomeScreen from "../screens/users/UserHomeScreen";
 import BusinessCatalogueScreen from "../screens/business/BusinessCatalogueScreen";
+<<<<<<< HEAD
 //import RouteMapScreen from "../screens/users/RouteMapScreen";
 import PaymentScreen from "../screens/users/PaymentSceen";
 import MapScreen from "../screens/users/MapScreen";
@@ -103,6 +108,152 @@ return (
     </NavigationContainer>
   </AuthContext.Provider>
 );
+=======
+
+import { isBusiness } from "../screens/auth/LoginScreen";
+
+// Async storage
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { doLogin } from "../api/api.auth";
+
+
+const StackNavigator = createStackNavigator();
+const DrawerNavigator = createDrawerNavigator();
+
+
+const BusinessDrawerRoutes = () => {
+  return(
+      <DrawerNavigator.Navigator initialRouteName="BusinessHome">
+      
+        <DrawerNavigator.Screen
+          name="BusinessHome"
+          component={BusinessHomeScreen}
+          options={{
+            ...defautlStyles,
+            title: "Mi catálogo",
+            headerTitleAlign: "center",
+          }}  
+        />
+        <DrawerNavigator.Screen
+          name="BusinessCatalogue"
+          component={BusinessCatalogueScreen}
+        />
+        <DrawerNavigator.Screen
+          name="NewProduct"
+          component={AddProductScreen}
+        />
+
+        <DrawerNavigator.Screen
+          name="Update"
+          component={UpdateProductScreen}
+        />
+
+      </DrawerNavigator.Navigator>
+  );
+}
+
+const UserDrawerRoutes = () => {
+  return(
+      <DrawerNavigator.Navigator initialRouteName="UserHome">
+      <DrawerNavigator.Screen
+          name="UserHome"
+          component={UserHomeScreen}
+        />
+
+      </DrawerNavigator.Navigator>
+  );
+}
+
+
+const AppNavigator = () => {
+
+ 
+
+
+  return (
+      <NavigationContainer>
+        
+      <StackNavigator.Navigator>
+
+        <StackNavigator.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
+          ...defautlStyles,
+          title: "Inicia sesión",
+          headerTitleAlign: "center",
+        }}
+        />
+        <StackNavigator.Screen
+        name="UserRegister"
+        component={RegisterUserScreen}
+        options={{
+          ...defautlStyles,
+          title: "¡Bienvenido!",
+          headerTitleAlign: "center",
+        }}
+      />
+      <StackNavigator.Screen
+        name="BusinessRegister"
+        component={RegisterBusinessScreen}
+        options={{
+          ...defautlStyles,
+          title: "¡Trabaja con nosotros!",
+          headerTitleAlign: "center",
+        }}
+      />
+      
+      <StackNavigator.Screen
+        name="BusinessHome"
+        component={BusinessHomeScreen}
+        options={{
+          ...defautlStyles,
+          title: "Selecciona una opción",
+          headerTitleAlign: "center",
+        }}
+      />
+      <StackNavigator.Screen
+        name="BusinessCatalogue"
+        component={BusinessCatalogueScreen}
+        options={{
+          ...defautlStyles,
+          title: "Tu catálogo",
+          headerTitleAlign: "center",
+        }}
+      />
+      <StackNavigator.Screen
+        name="NewProduct"
+        component={AddProductScreen}
+        options={{ ...defautlStyles, title: "Agregar nueva tarea" }}
+      />
+
+      <StackNavigator.Screen
+        name="Update"
+        component={UpdateProductScreen}
+        options={{
+          ...defautlStyles,
+          title: "Editar Tareas",
+          headerTitleAlign: "center",
+        }}
+      />
+
+      <StackNavigator.Screen
+        name="BProductScreen"
+        component={BProductScreen}
+        options={{
+          ...defautlStyles,
+          title: "Tarea",
+          headerTitleAlign: "center",
+        }}
+      />
+
+
+        
+      </StackNavigator.Navigator>
+      </NavigationContainer>
+  );
+};
+>>>>>>> 3f7c9fa50ddf51e834c132b26dc1e95914798681
 
 const defautlStyles = {
   headerStyle: {
