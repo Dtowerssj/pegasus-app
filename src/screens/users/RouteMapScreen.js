@@ -32,8 +32,8 @@ const MapViewScreen = (props) => {
         }}
         provider={PROVIDER_GOOGLE}
         initialRegion={{
-          latitude: 10.7217,
-          longitude: -71.6207,
+          latitude: 10.721794,
+          longitude: -71.620774,
           longitudeDelta: 0.0922,
           latitudeDelta: 0.0421,
         }}
