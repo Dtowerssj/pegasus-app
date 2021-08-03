@@ -5,6 +5,7 @@ import CustomButton from "../../components/CustomButton";
 import { Colors } from "../../constants";
 import globalStyles from "../../styles/global";
 import { createProduct } from "../../api/api.product";
+import { getToken } from "../../api/api.auth";
 
 // Input de descripción
 const DescriptionTextInput = (props) => {
@@ -14,10 +15,16 @@ const DescriptionTextInput = (props) => {
 
 const AddProductScreen = ({ navigation }) => {
 
-  const [product, setProduct] = useState({ nombre: '', descripcion: '', precio: '' });
+  const userData = getToken();
+  id_establecimiento = userData.id;
+
+  const [product, setProduct] = useState({ nombre: '', descripcion: '', precio: '', id_establecimiento: id_establecimiento });
   const handleChange = (name, value) => setProduct({...product, [name]: value  });
 
+
+
   const handleSubmit = () => {
+    
     if (product.nombre.trim() === "") {
       return Alert.alert(
         "Error de Validación",

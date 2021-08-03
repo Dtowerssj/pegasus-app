@@ -30,7 +30,7 @@ const CustomButton = ({ onPress, text, round, icon, iconColor, danger, style }) 
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors[1],
+    backgroundColor: Colors[2],
     alignItems: 'center',
     justifyContent: 'center',
     padding: 15,

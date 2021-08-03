@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import AuthContext from '../navigation/AppNavigator';
+//import AuthContext from '../navigation/AppNavigator';
 
-const storeToken = async (user) => {
+export const storeToken = async (user) => {
     try {
       await AsyncStorage.setItem("user", JSON.stringify(user));
    } catch (error) {
@@ -11,8 +11,22 @@ const storeToken = async (user) => {
    }
   }
 
+ export const getToken = async () => {
+    let userData;
+    let data;
+    
+    try {
+      data = await AsyncStorage.getItem("user");
+      userData = JSON.parse(data);
+      console.log("Id del token del user: "+userData.id);
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+    return userData;
+  }
+
+
 export const doLogin = async (credentials) => {
-  const { signIn } = React.useContext(AuthContext);
     
     let data;
     const url = "https://p3-rn-back.herokuapp.com/api/login";
@@ -41,5 +55,3 @@ export const doLogin = async (credentials) => {
       })
       return data;
   };
-
-  export default AuthContext;
