@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text } from "react-native";
+/*import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 
@@ -47,4 +47,4 @@ const MapViewScreen = (props) => {
   );
 };
 
-export default MapViewScreen;
+export default MapViewScreen;*/

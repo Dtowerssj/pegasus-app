@@ -12,7 +12,8 @@ import globalStyles from "../../styles/global";
 //import { createTask, getTask, updateTask } from "../api/api.tasks";
 import { useIsFocused } from "@react-navigation/native";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
-import { style } from "styled-system";
+import Icon from "react-native-vector-icons/Ionicons";
+//import AsyncStorage from "@react-native-community/async-storage";
 
 const BProductScreen = ({ navigation, route }) => {
   const [task, setTask] = useState();
@@ -52,18 +53,58 @@ const BProductScreen = ({ navigation, route }) => {
               Ver Ubicación
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("ShoppingCart")}>
-            <FontAwesome5
-              name="shopping-cart"
-              size={24}
-              style={styles.icon}
-            ></FontAwesome5>
-          </TouchableOpacity>
         </View>
       </View>
     </TouchableWithoutFeedback>
   );
 };
+
+/*const onClickAddCart = async (data) => {
+  const itemcart = {
+    food: data,
+    quantity: 1,
+    price: data.price,
+  };
+
+  await AsyncStorage.getItem("cart")
+    .then((datacart) => {
+      if (datacart !== null) {
+        // We have data!!
+        const cart = JSON.parse(datacart);
+        cart.push(itemcart);
+        AsyncStorage.setItem("cart", JSON.stringify(cart));
+      } else {
+        const cart = [];
+        cart.push(itemcart);
+        AsyncStorage.setItem("cart", JSON.stringify(cart));
+      }
+      alert("Añadido Exitosamente");
+    })
+    .catch((err) => {
+      alert(err);
+    });
+
+  return (
+    <TouchableOpacity
+      onPress={() => this.onClickAddCart(item)}
+      style={{
+        width: width / 2 - 40,
+        backgroundColor: "#33c37d",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 5,
+        padding: 4,
+      }}
+    >
+      <Text style={{ fontSize: 18, color: "white", fontWeight: "bold" }}>
+        Add Cart
+      </Text>
+      <View style={{ width: 10 }} />
+      <Icon name="md-add-circle" size={30} color={"white"} />
+    </TouchableOpacity>
+  );
+};*/
 
 const styles = StyleSheet.create({
   container: {

@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import {
   Text,
   View,
@@ -8,13 +8,12 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
-import { Colors } from "../../constants";
 
 var { width } = Dimensions.get("window");
 import Icon from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-community/async-storage";
 
-export default class ShoppingCartScreen extends Component {
+export default class ShoppingCartScreen {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +21,7 @@ export default class ShoppingCartScreen extends Component {
     };
   }
 
-  componentDidMount() {
+  useEffect() {
     AsyncStorage.getItem("cart").then((cart) => {
       if (cart !== null) {
         const cartshop = JSON.parse(cart);
@@ -64,7 +63,7 @@ export default class ShoppingCartScreen extends Component {
                   >
                     <View>
                       <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-                        Titulo
+                        {item.food.name}
                       </Text>
                       <Text>Papas con Queso{JSON.stringify(item)}</Text>
                     </View>
@@ -184,4 +183,4 @@ export default class ShoppingCartScreen extends Component {
       this.setState({ dataCart: cart });
     }
   }
-}
+}*/
