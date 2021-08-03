@@ -19,7 +19,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // Cliente de axios
 import axios from "axios";
 
-import { doLogin } from "../../api/api.auth";
+import { AuthContext } from "../../navigation/AppNavigator";
 
 
 const LoginScreen = ({ navigation }) => {
@@ -27,58 +27,9 @@ const LoginScreen = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
-  
-
-  const storeToken = async (user) => {
-    try {
-      await AsyncStorage.setItem("user", JSON.stringify(user));
-   } catch (error) {
-     console.log("Something went wrong", error);
-   }
-  }
-
-  const getToken = async () => {
-    let userData;
-    try {
-      userData = await AsyncStorage.getItem("user");
-      const data = JSON.parse(userData);
-      console.log("Data del token del user: "+data.nombre);
-      return data;
-    } catch (error) {
-      console.log("Something went wrong", error);
-    }
-    return userData;
-  }
+  const { signIn } = React.useContext(AuthContext);
 
   
-
-  const handleLogin = async (credentials) => {
-    handleMessage(null);
-    const url = "https://p3-rn-back.herokuapp.com/api/login";
-    
-    axios
-      .post(url, credentials)
-      .then((response) => {
-        const result = response.data;
-        const { message, status, data } = result;
-        
-        if(response.data[0].status == 404) {
-          Alert.alert("Login fallido", "revise sus credenciales")
-        } else if(response.data[0].business == true) {
-          try {
-            storeToken(response.data[1]); 
-            //navigation.navigate("BusinessHome")
-          } catch (error) {
-            console.log(error)
-          }
-          
-        } else if (response.data[0].business == false) {
-          storeToken(response.data[1]); 
-          getToken()
-          //navigation.navigate("UserHome")
-        }
-      })
-  }; 
 
   const handleMessage = (message, type = "FAILED") => {
     setMessage(message);
@@ -101,7 +52,7 @@ const LoginScreen = ({ navigation }) => {
               //setSubmitting(false);
             } else {
               
-              doLogin.signIn(values);
+              signIn(values);
              //handleLogin(values);
             }
           }}

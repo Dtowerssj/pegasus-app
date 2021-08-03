@@ -9,17 +9,20 @@ import Business from "../../components/Business";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
 import { getBusiness } from "../../api/api.business";
+import { AuthContext } from "../../navigation/AppNavigator";
 
 const UserHomeScreen = ({ navigation }) => {
   const [business, setBusiness] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+
+  const { signOut } = React.useContext(AuthContext);
 
   const isFocused = useIsFocused();
 
   const loadBusiness = async () => {
     const data = await getBusiness();
     setBusiness(data);
-    console.log(data);
+    //console.log(data);
   };
 
   useEffect(() => {
@@ -64,6 +67,7 @@ const UserHomeScreen = ({ navigation }) => {
             />
           }
         />
+        <CustomButton text="cerrar sesión" onPress={signOut}></CustomButton>
     </View>
   );
 };

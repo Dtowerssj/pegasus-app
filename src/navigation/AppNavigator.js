@@ -24,7 +24,7 @@ import { AuthScreens } from "./AppScreens";
 
 // Async storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { doLogin } from "../api/api.auth";
+import { doLogin, getIsBusiness } from "../api/api.auth";
 
 export const AuthContext = React.createContext();
 
@@ -85,18 +85,21 @@ const AppNavigator = () => {
           return {
             ...prevState,
             userToken: action.token,
+            isBusiness: action.isBusiness,
             isLoading: false,
           };
         case 'SIGN_IN':
           return {
             ...prevState,
             isSignout: false,
+            isBusiness: action.isBusiness,
             userToken: action.token,
           };
         case 'SIGN_OUT':
           return {
             ...prevState,
             isSignout: true,
+            isBusiness: null,
             userToken: null,
           };
       }
@@ -105,12 +108,14 @@ const AppNavigator = () => {
       isLoading: true,
       isSignout: false,
       userToken: null,
+      isBusiness: null,
     }
   );
 
   React.useEffect(() => {
     // Fetch the token from storage then navigate to our appropriate place
     const bootstrapAsync = async () => {
+      let isBusinessValue;
       let userToken;
 
       try {
@@ -119,6 +124,7 @@ const AppNavigator = () => {
         userToken = JSON.parse(data);
         console.log("Nombre: " + userToken.nombre);
         
+        isBusinessValue = await getIsBusiness();
       } catch (e) {
         // Restoring token failed
         console.log(e);
@@ -128,7 +134,7 @@ const AppNavigator = () => {
 
       // This will switch to the App screen or Auth screen and this loading
       // screen will be unmounted and thrown away.
-      dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+      dispatch({ type: 'RESTORE_TOKEN', token: userToken, isBusiness: isBusinessValue });
     };
 
     bootstrapAsync();
@@ -148,7 +154,7 @@ const AppNavigator = () => {
 
       dispatch({ type: 'SIGN_IN', token: userData });
     },
-    signOut: () => dispatch({ type: 'SIGN_OUT' }),
+    signOut: () => dispatch({ type: 'SIGN_OUT' , isBusiness: null }),
     signUp: async (data) => {
       // In a production app, we need to send user data to server and get a token
       // We will also need to handle errors if sign up failed
@@ -201,14 +207,21 @@ const AppNavigator = () => {
         
          </>
          
-      ) : (
+      ) : state.isBusiness == true ? (
         <>
         <StackNavigator.Screen
           name="Mi catálogo"
           component={BusinessDrawerRoutes}
         />
         </>
-      )}
+      ) : (
+      <>
+        <StackNavigator.Screen
+          name="Restaurantes disponibles"
+          component={UserDrawerRoutes}
+        />
+        </>
+        )}
 
 
         

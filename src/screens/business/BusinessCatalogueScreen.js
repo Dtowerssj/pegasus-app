@@ -9,16 +9,39 @@ import Product from "../../components/Product";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
 import { getProducts, deleteProduct } from "../../api/api.product";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getIsBusiness } from "../../api/api.auth";
+
+
 
 const BusinessCatalogueScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const isFocused = useIsFocused();
 
+  const getToken = async () => {
+    let userData;
+    
+    try {
+      data = await AsyncStorage.getItem("user");
+      userData = JSON.parse(data);
+      console.log("Data del token del user: "+userData.id);
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+    return userData;
+  }
+
+
   const loadProducts = async () => {
-    const data = await getProducts();
+    const userData = await getToken();
+    id_establecimiento = userData.id;
+    console.log("id: "+id_establecimiento)
+    const isBusiness = await getIsBusiness()
+    console.log("isBusiness: "+ isBusiness)
+    const data = await getProducts(id_establecimiento);
     setProducts(data);
-    console.log(data);
+    //console.log(data);
   };
 
   useEffect(() => {
