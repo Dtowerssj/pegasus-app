@@ -13,12 +13,25 @@ A food delivery app in the style of Uber Eats, built with React Native and Expo.
 - **Catalog management** for establishments: list their products, create new ones, edit them and delete them.
 - Stack navigation between all screens, with a custom Ubuntu font and a purple theme.
 
+## Branches
+
+This default branch (`p3`) has the base app. The delivery branches go further:
+
+| Branch | What it adds |
+|---|---|
+| [`entrega2`](https://github.com/Dtowerssj/pegasus-app/tree/entrega2) | The most complete version: **Google Maps** screens with delivery routes (`react-native-maps` and `react-native-maps-directions`), a **shopping cart** and a **Stripe payment** screen (test mode) |
+| `entrega-2` | An earlier step with the maps work |
+| `entrega-2-useContext` | An attempt to move authentication to React Context, left unfinished |
+
+The Google Maps API key is not included: you need your own to see the maps.
+
 ## Tech stack
 
 - React Native with Expo (SDK 42)
 - React Navigation (stack)
 - Formik for the forms
 - Axios and `fetch` for the REST API calls
+- On the delivery branches: Google Maps (`react-native-maps`) and Stripe
 - The REST API lives in a separate repository: [pegasus-backend](https://github.com/Dtowerssj/pegasus-backend) (Node.js, Express and PostgreSQL)
 
 ## Getting started
