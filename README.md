@@ -19,7 +19,7 @@ This default branch (`p3`) has the base app. The delivery branches go further:
 
 | Branch | What it adds |
 |---|---|
-| [`entrega2`](https://github.com/Dtowerssj/pegasus-app/tree/entrega2) | The most complete version: **Google Maps** screens with delivery routes (`react-native-maps` and `react-native-maps-directions`), a **shopping cart** and a **Stripe payment** screen (test mode) |
+| [`entrega2`](https://github.com/Dtowerssj/pegasus-app/tree/entrega2) | The most complete version, still a work in progress: a **Google Maps** screen (`react-native-maps`, with a draggable pin and a radius circle) and a **Stripe payment** prototype (`react-native-webview`, test mode) that is not wired into the navigation yet. The delivery route (`react-native-maps-directions`) and the shopping cart screens were started but are commented out |
 | `entrega-2` | An earlier step with the maps work |
 | `entrega-2-useContext` | An attempt to move authentication to React Context, left unfinished |
 
